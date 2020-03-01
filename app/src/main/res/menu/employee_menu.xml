@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/addEmployeeOption"
+        android:title="Add Employee"/>
+
+    <item android:id="@+id/searchEmployeeOption"
+        android:title="Search Employee"/>
+
+</menu>

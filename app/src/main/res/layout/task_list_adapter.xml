@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="100">
+
+    <TextView
+        android:id="@+id/taskListIdText"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:layout_weight="20"
+        android:gravity="center_horizontal"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/taskNameText"
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:layout_weight="20"
+        android:gravity="center_horizontal"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/taskEmpNameText"
+        android:layout_width="130dp"
+        android:layout_height="match_parent"
+        android:layout_weight="20"
+        android:gravity="center_horizontal"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/taskListEndDateText"
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:layout_weight="20"
+        android:gravity="center_horizontal"
+        android:textSize="15sp" />
+
+</LinearLayout>

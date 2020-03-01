@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <AutoCompleteTextView
+        android:id="@+id/taskEmpNameInput"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:hint="@string/employee_name"
+        app:layout_constraintStart_toStartOf="@+id/taskDeptNameInput"
+        app:layout_constraintTop_toBottomOf="@+id/taskDeptNameInput" />
+
+    <ImageView
+        android:id="@+id/taskEndDateArrow"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/task_end_date_selector"
+        android:onClick="endDateOnClick"
+        android:padding="5sp"
+        android:src="@mipmap/baseline_arrow_drop_down_black_18dp"
+        app:layout_constraintEnd_toEndOf="@+id/taskStartDateArrow"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/taskEndDateText"
+        app:layout_constraintTop_toBottomOf="@+id/taskStartDateText" />
+
+    <ImageView
+        android:id="@+id/taskStartDateArrow"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/task_start_date_selector"
+        android:onClick="startDateOnClick"
+        android:padding="5sp"
+        android:src="@mipmap/baseline_arrow_drop_down_black_18dp"
+        app:layout_constraintEnd_toEndOf="@+id/taskEmpIdText"
+        app:layout_constraintTop_toBottomOf="@+id/taskEmpIdText" />
+
+    <TextView
+        android:id="@+id/taskEmpIdText"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:hint="@string/id_prefix"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/taskDeptArrow"
+        app:layout_constraintTop_toBottomOf="@+id/taskDeptNameInput" />
+
+    <TextView
+        android:id="@+id/taskEndDateText"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:hint="@string/end_date"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/taskStartDateText"
+        app:layout_constraintTop_toBottomOf="@+id/taskStartDateText" />
+
+    <ImageView
+        android:id="@+id/taskDeptArrow"
+        android:layout_width="40dp"
+        android:layout_height="40sp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/task_dept_selector"
+        android:onClick="deptOnClick"
+        android:padding="5sp"
+        android:src="@mipmap/baseline_arrow_drop_down_black_18dp"
+        app:layout_constraintEnd_toEndOf="@+id/taskNameInput"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/taskDeptNameInput"
+        app:layout_constraintTop_toBottomOf="@+id/taskNameInput" />
+
+    <EditText
+        android:id="@+id/taskNameInput"
+        android:textSize="18sp"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="56dp"
+        android:ems="10"
+        android:hint="@string/task_name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no" />
+
+    <TextView
+        android:id="@+id/taskStartDateText"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:hint="@string/start_date"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/taskStartDateArrow"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/taskEmpNameInput"
+        app:layout_constraintTop_toBottomOf="@+id/taskEmpNameInput" />
+
+    <EditText
+        android:id="@+id/taskDescriptionInput"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/description"
+        android:inputType="textPersonName"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/taskEndDateArrow"
+        app:layout_constraintStart_toStartOf="@+id/taskEndDateText"
+        app:layout_constraintTop_toBottomOf="@+id/taskEndDateText"
+        android:importantForAutofill="no" />
+
+    <Button
+        android:id="@+id/taskAddButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="80dp"
+        android:onClick="addOnClick"
+        android:text="@string/add"
+        app:layout_constraintEnd_toStartOf="@+id/taskViewButton"
+        app:layout_constraintHorizontal_bias="0.622"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/taskDescriptionInput" />
+
+    <Button
+        android:id="@+id/taskViewButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:onClick="viewOnClick"
+        android:text="@string/view_all"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/taskAddButton"
+        app:layout_constraintTop_toBottomOf="@+id/taskDescriptionInput" />
+
+    <AutoCompleteTextView
+        android:id="@+id/taskDeptNameInput"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:hint="@string/department"
+        app:layout_constraintStart_toStartOf="@+id/taskNameInput"
+        app:layout_constraintTop_toBottomOf="@+id/taskNameInput" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
