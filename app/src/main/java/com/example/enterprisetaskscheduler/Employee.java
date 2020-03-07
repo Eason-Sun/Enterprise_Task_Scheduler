@@ -1,15 +1,11 @@
 package com.example.enterprisetaskscheduler;
 
-
-import android.content.Intent;
-
-public class Employee{
+public class Employee extends ListItem {
     public static final String[] DEPARTMENTS = {"R&D", "Marketing", "Manufacturing", "Sales", "Logistic"};
     private String firstName;
     private String lastName;
     private String department;
     private String startDate;
-    private int id = -1;
 
 
     public Employee(String firstName, String lastName, String department, String startDate) {
@@ -32,23 +28,13 @@ public class Employee{
         return department;
     }
 
-    public String getStartDate() { return startDate; }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    private String format(String s) {
-        return s.substring(0, 1).toUpperCase() + s.substring(1).toLowerCase();
+    public String getStartDate() {
+        return startDate;
     }
 
     public boolean contains(String s) {
         s = s.toLowerCase();
-        return Integer.toString(id).contains(s) ||
+        return Integer.toString(super.getId()).contains(s) ||
                 firstName.toLowerCase().contains(s) ||
                 lastName.toLowerCase().contains(s) ||
                 department.toLowerCase().contains(s);

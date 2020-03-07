@@ -12,24 +12,19 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-public class EmployeeListAdapter extends ArrayAdapter<Employee> {
 
-    private ArrayList<Employee> employees;
-    private LayoutInflater inflater;
-    private int viewResourceId;
+public class EmployeeListAdapter extends ItemListAdapter {
+
 
     public EmployeeListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Employee> employees) {
         super(context, resource, employees);
-        this.employees = employees;
-        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        viewResourceId = resource;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        convertView = inflater.inflate(viewResourceId,null);
-        Employee e = employees.get(position);
+        convertView = super.getInflater().inflate(super.getViewResourceId(),null);
+        Employee e = (Employee) super.getItems().get(position);
         if (e != null) {
             TextView idText = convertView.findViewById(R.id.empListIdText);
             TextView fstNameText = convertView.findViewById(R.id.empListFstNameText);
@@ -44,17 +39,4 @@ public class EmployeeListAdapter extends ArrayAdapter<Employee> {
         }
         return convertView;
     }
-
-    public void update(ArrayList<Employee> filteredEmployees) {
-        employees = new ArrayList<>();
-        employees.addAll(filteredEmployees);
-        notifyDataSetChanged(); // Notify android to update the listView
-    }
-
-    // Must be overridden for updated size of filtered employee list
-    @Override
-    public int getCount() {
-        return employees.size();
-    }
-
 }

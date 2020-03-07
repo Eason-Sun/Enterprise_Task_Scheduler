@@ -12,24 +12,17 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-public class TaskListAdapter extends ArrayAdapter<Task> {
-
-    private ArrayList<Task> tasks;
-    private LayoutInflater inflater;
-    private int viewResourceId;
+public class TaskListAdapter extends ItemListAdapter {
 
     public TaskListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<Task> tasks) {
         super(context, resource, tasks);
-        this.tasks = tasks;
-        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        viewResourceId = resource;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        convertView = inflater.inflate(viewResourceId,null);
-        Task task = tasks.get(position);
+        convertView = super.getInflater().inflate(super.getViewResourceId(), null);
+        Task task = (Task) super.getItems().get(position);
         if (task != null) {
             TextView taskListIdText = convertView.findViewById(R.id.taskListIdText);
             TextView taskNameText = convertView.findViewById(R.id.taskNameText);
@@ -39,21 +32,7 @@ public class TaskListAdapter extends ArrayAdapter<Task> {
             taskNameText.setText(task.getTaskName());
             taskListEndDateText.setText(task.getEndDate());
             taskEmpNameText.setText(task.getEmpName());
-
         }
         return convertView;
     }
-
-    public void update(ArrayList<Task> filteredTasks) {
-        tasks = new ArrayList<>();
-        tasks.addAll(filteredTasks);
-        notifyDataSetChanged(); // Notify android to update the listView
-    }
-
-    // Must be overridden for updated size of filtered employee list
-    @Override
-    public int getCount() {
-        return tasks.size();
-    }
-
 }
