@@ -62,7 +62,6 @@ public class AddEmployee extends AppCompatActivity {
         } else {
             Toast.makeText(this, "All fields must be filled!", Toast.LENGTH_LONG).show();
         }
-
     }
 
     public void viewOnClick(View view) {
