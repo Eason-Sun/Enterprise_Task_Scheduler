@@ -8,40 +8,37 @@ import android.widget.TextView;
 
 
 public class DetailTaskView extends AppCompatActivity {
-    private DatabaseHelper db;
+    private TaskTableHelper taskDb;
+    private EmployeeTableHelper empDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_task_view);
+        TextView taskDetailNameText, taskDetailDeptText, taskDetailEmpNameText, taskDetailStatusText, taskDetailStartDateText, taskDetailEndDateText, taskDetailDescriptionText;
+        taskDb = new TaskTableHelper(this);
+        empDb = new EmployeeTableHelper(this);
+        int taskID = Integer.parseInt(getIntent().getStringExtra("taskID"));
+        Cursor data = taskDb.getDataById(taskID);
 
-        TextView taskNameDisplay, departmentDisplay, employeeNameDisplay,taskStatusDisplay;
-        TextView startdateDisplay,enddateDisplay,taskDesDisplay;
-        db = new DatabaseHelper(this);
-
-        String taskID = getIntent().getStringExtra("taskID");
-        Cursor data = db.getTaskDetail(taskID);
-
-        taskNameDisplay = findViewById(R.id.taskNameDisplay);
-        departmentDisplay = findViewById(R.id.departmentDisplay);
-        employeeNameDisplay =findViewById(R.id.employeeNameDisplay);
-        taskStatusDisplay=findViewById(R.id.taskStatusDisplay);
-        startdateDisplay=findViewById(R.id.startdateDisplay);
-        enddateDisplay = findViewById(R.id.enddateDisplay);
-        taskDesDisplay = findViewById(R.id.taskDesDisplay);
+        taskDetailNameText = findViewById(R.id.taskDetailNameText);
+        taskDetailDeptText = findViewById(R.id.taskDetailDeptText);
+        taskDetailEmpNameText = findViewById(R.id.taskDetailEmpNameText);
+        taskDetailStatusText = findViewById(R.id.taskDetailStatusText);
+        taskDetailStartDateText = findViewById(R.id.taskDetailStartDateText);
+        taskDetailEndDateText = findViewById(R.id.taskDetailEndDateText);
+        taskDetailDescriptionText = findViewById(R.id.taskDetailDescriptionText);
 
         data.moveToNext();
-        taskNameDisplay.setText(data.getString(1));
-        startdateDisplay.setText(data.getString(2));
-        enddateDisplay.setText(data.getString(3));
-        taskStatusDisplay.setText(data.getString(5));
-        taskDesDisplay.setText(data.getString(6));
+        taskDetailNameText.setText(data.getString(1));
+        taskDetailStartDateText.setText(data.getString(2));
+        taskDetailEndDateText.setText(data.getString(3));
+        int empId = data.getInt(4);
+        taskDetailEmpNameText.setText(empDb.getNameById(empId));
+        taskDetailDeptText.setText(data.getString(5));
+        taskDetailStatusText.setText(data.getString(6));
+        taskDetailDescriptionText.setText(data.getString(7));
 
-        String employeeID = data.getString(4);
-        data = db.getEmployeeInformation(employeeID);
-        data.moveToNext();
-        departmentDisplay.setText(data.getString(3));
-        employeeNameDisplay.setText(data.getString(1)+" "+data.getString(2));
 
     }
 }

@@ -1,10 +1,8 @@
 package com.example.enterprisetaskscheduler;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,16 +24,14 @@ public class EmployeeListAdapter extends ItemListAdapter {
         convertView = super.getInflater().inflate(super.getViewResourceId(),null);
         Employee e = (Employee) super.getItems().get(position);
         if (e != null) {
-            TextView idText = convertView.findViewById(R.id.empListIdText);
-            TextView fstNameText = convertView.findViewById(R.id.empListFstNameText);
-            TextView lstNameText = convertView.findViewById(R.id.empListLstNameText);
-            TextView deptText = convertView.findViewById(R.id.empListDeptText);
-            TextView startDateText = convertView.findViewById(R.id.empListStartDateText);
-            idText.setText(" #" + e.getId());
-            fstNameText.setText(e.getFirstName());
-            lstNameText.setText(e.getLastName());
-            deptText.setText(e.getDepartment());
-            startDateText.setText(e.getStartDate());
+            TextView empListIdText = convertView.findViewById(R.id.empListIdText);
+            TextView empListNameText = convertView.findViewById(R.id.empListNameText);
+            TextView empListDeptText = convertView.findViewById(R.id.empListDeptText);
+            TextView empListStartDateText = convertView.findViewById(R.id.empListStartDateText);
+            empListIdText.setText(" #" + e.getId());
+            empListNameText.setText(e.getName());
+            empListDeptText.setText(e.getDept());
+            empListStartDateText.setText(e.getStartDate());
         }
         return convertView;
     }
