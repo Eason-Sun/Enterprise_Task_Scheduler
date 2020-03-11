@@ -43,8 +43,5 @@ public class DetailTaskView extends AppCompatActivity {
         departmentDisplay.setText(data.getString(3));
         employeeNameDisplay.setText(data.getString(1)+" "+data.getString(2));
 
-
-
-
     }
 }

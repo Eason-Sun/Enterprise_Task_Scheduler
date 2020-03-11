@@ -16,7 +16,6 @@ import androidx.appcompat.widget.SearchView;
 import java.util.ArrayList;
 
 public class EmployeeListView extends AppCompatActivity {
-
     private DatabaseHelper db;
     private ListView listView;
     ArrayList<Employee> employees;
@@ -55,7 +54,6 @@ public class EmployeeListView extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) { // It gets called for every new input string
-
                 return false;
             }
 

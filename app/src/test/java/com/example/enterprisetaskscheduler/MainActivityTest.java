@@ -16,16 +16,11 @@ import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
 
-import org.robolectric.Shadows;
+
 import org.robolectric.annotation.Config;
-import org.robolectric.fakes.RoboMenu;
 import org.robolectric.fakes.RoboMenuItem;
-import org.robolectric.shadow.api.Shadow;
-import org.robolectric.shadows.ShadowActivity;
 import org.robolectric.shadows.ShadowIntent;
 import org.robolectric.shadows.ShadowPopupMenu;
-
-
 
 import static org.junit.Assert.*;
 import static org.robolectric.Shadows.shadowOf;
@@ -37,7 +32,6 @@ public class MainActivityTest {
     private Intent startedIntent;
     private ShadowIntent shadowIntent;
 
-
     @Before
     public void setUp() throws Exception {
         mainActivity = Robolectric.buildActivity(MainActivity.class).create().start().get();
@@ -48,7 +42,6 @@ public class MainActivityTest {
         Button employeeButton = mainActivity.findViewById(R.id.employeeButton);
 
         //Check if the button display
-
         assertNotNull(taskButton);
         assertNotNull(employeeButton);
     }

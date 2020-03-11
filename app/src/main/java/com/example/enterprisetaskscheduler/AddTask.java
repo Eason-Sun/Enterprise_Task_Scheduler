@@ -24,7 +24,6 @@ public class AddTask extends AppCompatActivity {
     private TextView taskEmpIdText, taskStartDateText, taskEndDateText;
     private DatabaseHelper db;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,7 +67,6 @@ public class AddTask extends AppCompatActivity {
             }
         });
         taskStartDateText.setText(startYear + "/" + (startMonth + 1) + "/" + startDay);
-
     }
 
     public void deptOnClick(View view) {

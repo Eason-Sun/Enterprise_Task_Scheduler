@@ -17,7 +17,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_START_DATE = "`Start_Date`";
     public static final String COL_END_DATE = "`End_Date`";
     public static final String COL_STATUS = "`Status`";
-
     // Table for Task
     public static final String TASK_TABLE_NAME = "task";
     public static final String COL_TASK_NAME = "`Task_Name`";
@@ -144,6 +143,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             data.close();
             return "None";
         }
+    }
+
+    public Cursor searchDataBase(String tableName, String condition, String value) {
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor data = db.rawQuery("select * from " + tableName + " where " +
+                condition + " = " + "'"+ value + "'", null);
+        return data;
     }
 
 

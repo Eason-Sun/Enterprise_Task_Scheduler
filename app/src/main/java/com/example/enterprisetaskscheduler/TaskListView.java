@@ -47,7 +47,6 @@ public class TaskListView extends AppCompatActivity {
                 String employeeName = employeeData.getString(1)+" "+employeeData.getString(2);
                 task.setEmpName(employeeName);
 
-
                 tasks.add(task);
                 adapter = new TaskListAdapter(this, R.layout.task_list_adapter, tasks);
                 listView.setAdapter(adapter);

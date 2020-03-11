@@ -2,13 +2,13 @@ package com.example.enterprisetaskscheduler;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
-import android.view.Menu;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import org.junit.After;
@@ -22,7 +22,14 @@ import org.robolectric.annotation.Config;
 import org.robolectric.shadow.api.Shadow;
 import org.robolectric.shadows.ShadowDatePickerDialog;
 import org.robolectric.shadows.ShadowIntent;
-import org.robolectric.shadows.ShadowPopupMenu;
+import org.robolectric.shadows.ShadowSQLiteOpenHelper;
+import org.robolectric.shadows.ShadowToast;
+
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import static org.junit.Assert.*;
 import static org.robolectric.Shadows.shadowOf;
@@ -33,10 +40,18 @@ public class AddEmployeeTest {
     private AddEmployee addEmployee;
     private Intent startedIntent;
     private ShadowIntent shadowIntent;
+    // This path is relative to ${project_root}/src/test/resources
+    // This path is used in building the absolute path for the database
+    private static final String DB_PATH = "/database/list.db";
+    // This will contain the absolute file path to the database
+    private DatabaseHelper db;
 
     @Before
     public void setUp() throws Exception {
         addEmployee = Robolectric.buildActivity(AddEmployee.class).create().visible().get();
+        db = new DatabaseHelper(addEmployee.getApplicationContext());
+
+
     }
 
     @Test
@@ -62,7 +77,49 @@ public class AddEmployeeTest {
 
     @Test
     public void addOnClick() {
+        //Prepare Raw Data
+        String[] lstNameArray = {"Wu"};
+        String[] fstNameArray = {"Beichen"};
+        String[] empDeptName = {"R&D", "Marketing", "Manufacturing", "Sales", "Logistic"};
+        String pattern = "yyyy/MM/dd";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        Calendar.getInstance().getTime();
+        String currentTime = simpleDateFormat.format(Calendar.getInstance().getTime());
+        //Activity Object Setup
+        EditText empLstNameInput = addEmployee.findViewById(R.id.empLstNameInput);
+        EditText empFstNameInput = addEmployee.findViewById(R.id.empFstNameInput);
+        AutoCompleteTextView empDeptNameInput = addEmployee.findViewById(R.id.empDeptNameInput);
+        TextView empStartDateText = addEmployee.findViewById(R.id.empStartDateText);
+        Button empAddButton = addEmployee.findViewById(R.id.empAddButton);
 
+
+        //---Case Employee added successfully
+        //Setup the input
+        empLstNameInput.setText(lstNameArray[0]);
+        empFstNameInput.setText(fstNameArray[0]);
+        empDeptNameInput.setText(empDeptName[0]);
+        empStartDateText.setText(currentTime);
+        empAddButton.performClick();
+        //Check the toast are displayed properly
+        assertEquals(ShadowToast.getTextOfLatestToast(), "New employee has been added successfully!");
+        //Check that the employee information has been successfully uploaded with toast shown
+        Cursor data = db.searchDataBase(db.EMPLOYEE_TABLE_NAME, "Start_Date", currentTime);
+        data.moveToNext();
+        assertEquals(data.getString(1), fstNameArray[0]);
+        assertEquals(data.getString(2), lstNameArray[0]);
+        assertEquals(data.getString(3), empDeptName[0]);
+        db.close();
+
+
+        //----Case Employee added not successfully
+        //Setup the input
+        empLstNameInput.setText("");
+        empFstNameInput.setText("");
+        empDeptNameInput.setText(empDeptName[0]);
+        empStartDateText.setText(currentTime);
+        empAddButton.performClick();
+        //Check the toast are displayed properly
+        assertEquals(ShadowToast.getTextOfLatestToast(), "All fields must be filled!");
     }
 
     @Test
@@ -79,8 +136,7 @@ public class AddEmployeeTest {
     public void deptOnClick() {
         ImageView empDeptArrow = addEmployee.findViewById(R.id.empDeptArrow);
         AutoCompleteTextView empDeptNameInput = addEmployee.findViewById(R.id.empDeptNameInput);
-        empDeptArrow.performClick();
-
+        assertEquals(empDeptArrow.performClick(), true);
         //Test ArrayAdapter
         int index = 0;
         System.out.println(empDeptNameInput.getAdapter().getCount());
