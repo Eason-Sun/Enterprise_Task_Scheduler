@@ -7,31 +7,54 @@
     tools:context=".AddEmployee">
 
     <ImageView
+        android:id="@+id/empLevelArrow"
+        android:layout_width="40dp"
+        android:layout_height="40sp"
+        android:contentDescription="@string/emp_dept_selector"
+        android:onClick="levelOnClick"
+        android:padding="5sp"
+        android:src="@mipmap/baseline_arrow_drop_down_black_18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/empLevelInput"
+        app:layout_constraintEnd_toEndOf="@+id/empEmailInput"
+        app:layout_constraintStart_toEndOf="@+id/empLevelInput"
+        app:layout_constraintTop_toTopOf="@+id/empLevelInput" />
+
+    <AutoCompleteTextView
+        android:id="@+id/empLevelInput"
+        android:layout_width="160sp"
+        android:layout_height="40sp"
+        android:layout_marginTop="20dp"
+        android:hint="@string/level"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/empEmailInput"
+        app:layout_constraintTop_toBottomOf="@+id/empEmailInput" />
+
+    <ImageView
         android:id="@+id/taskStartDateArrow"
         android:layout_width="40dp"
-        android:layout_height="50sp"
-        android:layout_marginTop="20dp"
+        android:layout_height="40sp"
         android:contentDescription="@string/emp_start_date_selector"
         android:onClick="startDateOnClick"
         android:padding="5sp"
         android:src="@mipmap/baseline_arrow_drop_down_black_18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/empStartDateText"
         app:layout_constraintEnd_toEndOf="@+id/empDeptArrow"
-        app:layout_constraintTop_toBottomOf="@+id/empDeptNameInput" />
+        app:layout_constraintTop_toTopOf="@+id/empStartDateText" />
 
     <EditText
         android:id="@+id/empLstNameInput"
         android:layout_width="200sp"
-        android:layout_height="50sp"
+        android:layout_height="40sp"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="@string/last_name"
-        android:textSize="18sp"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/empFstNameInput"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/empFstNameInput"
-        app:layout_constraintTop_toBottomOf="@+id/empFstNameInput"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/empFstNameInput" />
 
     <Button
         android:id="@+id/empAddButton"
@@ -39,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:onClick="addOnClick"
         android:text="@string/add"
         app:layout_constraintEnd_toStartOf="@+id/empViewButton"
@@ -51,7 +74,7 @@
         android:id="@+id/empViewButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="100dp"
         android:layout_marginRight="100dp"
         android:onClick="viewOnClick"
@@ -62,51 +85,65 @@
     <EditText
         android:id="@+id/empFstNameInput"
         android:layout_width="200sp"
-        android:layout_height="50sp"
+        android:layout_height="40sp"
         android:layout_marginTop="60dp"
         android:ems="10"
         android:hint="@string/first_name"
-        android:textSize="18sp"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <AutoCompleteTextView
         android:id="@+id/empDeptNameInput"
         android:layout_width="160sp"
-        android:layout_height="50sp"
+        android:layout_height="40sp"
         android:layout_marginTop="20dp"
         android:hint="@string/department"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@+id/empLstNameInput"
-        app:layout_constraintTop_toBottomOf="@+id/empLstNameInput" />
+        app:layout_constraintStart_toStartOf="@+id/empLevelInput"
+        app:layout_constraintTop_toBottomOf="@+id/empLevelInput" />
 
     <ImageView
         android:id="@+id/empDeptArrow"
         android:layout_width="40dp"
-        android:layout_height="50sp"
-        android:layout_marginTop="20dp"
+        android:layout_height="40sp"
         android:contentDescription="@string/emp_dept_selector"
         android:onClick="deptOnClick"
         android:padding="5sp"
         android:src="@mipmap/baseline_arrow_drop_down_black_18dp"
-        app:layout_constraintEnd_toEndOf="@+id/empLstNameInput"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintBottom_toBottomOf="@+id/empDeptNameInput"
+        app:layout_constraintEnd_toEndOf="@+id/empLevelArrow"
         app:layout_constraintStart_toEndOf="@+id/empDeptNameInput"
-        app:layout_constraintTop_toBottomOf="@+id/empLstNameInput" />
+        app:layout_constraintTop_toTopOf="@+id/empDeptNameInput" />
 
     <TextView
         android:id="@+id/empStartDateText"
         android:layout_width="160dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginTop="20dp"
+        android:gravity="left|center_vertical"
         android:hint="@string/start_date"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/taskStartDateArrow"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/empDeptNameInput"
         app:layout_constraintTop_toBottomOf="@+id/empDeptNameInput" />
+
+    <EditText
+        android:id="@+id/empEmailInput"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="@+id/empLstNameInput"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="@+id/empLstNameInput"
+        app:layout_constraintTop_toBottomOf="@+id/empLstNameInput"
+        android:autofillHints="" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

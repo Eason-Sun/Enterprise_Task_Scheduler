@@ -2,42 +2,31 @@ package com.example.enterprisetaskscheduler;
 
 
 public class Task extends ListItem{
-    private String taskName;
-    private String empName;
-    private String description;
-    private String startDate;
-    private String endDate;
-    private String status;
+    private String dueDate;
     private int empId;
+    private String description = "N/A";
+    private String status;
+    private String empName;
 
 
-    public Task(String taskName, String startDate, String endDate, int empId) {
-        super();
-        this.taskName = taskName;
+    public Task(String taskName, String startDate, String dueDate, int empId, String dept) {
+        super(taskName, dept, startDate);
+        this.dueDate = dueDate;
         this.empId = empId;
-        this.startDate = startDate;
-        this.endDate = endDate;
         this.status = "On Going";
-    }
-
-    public String getTaskName() {
-        return format(taskName);
     }
 
     public String getDescription() {
         return format(description);
     }
 
-    public String getEmpId() {
-        return String.valueOf(empId);
+    public int getEmpId() {
+        return empId;
     }
 
-    public String getStartDate() {
-        return startDate;
-    }
 
-    public String getEndDate() {
-        return endDate;
+    public String getDueDate() {
+        return dueDate;
     }
 
     public String getStatus() {
@@ -59,9 +48,9 @@ public class Task extends ListItem{
     public boolean contains(String s) {
         s = s.toLowerCase();
         return Integer.toString(super.getId()).contains(s) ||
-                taskName.toLowerCase().contains(s) ||
+                super.getName().toLowerCase().contains(s) ||
                 empName.toLowerCase().contains(s) ||
-                endDate.toLowerCase().contains(s);
+                dueDate.toLowerCase().contains(s);
     }
 
 }

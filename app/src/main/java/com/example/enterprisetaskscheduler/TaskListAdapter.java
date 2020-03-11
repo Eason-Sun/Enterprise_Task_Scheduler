@@ -29,8 +29,8 @@ public class TaskListAdapter extends ItemListAdapter {
             TextView taskEmpNameText = convertView.findViewById(R.id.taskEmpNameText);
             TextView taskListEndDateText = convertView.findViewById(R.id.taskListEndDateText);
             taskListIdText.setText(" #" + task.getId());
-            taskNameText.setText(task.getTaskName());
-            taskListEndDateText.setText(task.getEndDate());
+            taskNameText.setText(task.getName());
+            taskListEndDateText.setText(task.getDueDate());
             taskEmpNameText.setText(task.getEmpName());
         }
         return convertView;

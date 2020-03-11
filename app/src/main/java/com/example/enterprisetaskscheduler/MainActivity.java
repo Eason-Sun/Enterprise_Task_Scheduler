@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
     Button employeeButton;
     Button taskButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         employeeButton = findViewById(R.id.employeeButton);
         taskButton = findViewById(R.id.taskButton);
     }
+
     public void employeeMenuOnClick(View view) {
         PopupMenu employeeMenu = new PopupMenu(this, employeeButton);
         employeeMenu.inflate(R.menu.employee_menu);
@@ -30,8 +32,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(getBaseContext(), AddEmployee.class);
                     startActivity(intent);
                     return true;
-                }
-                else if (item.getItemId() == R.id.searchEmployeeOption) {
+                } else if (item.getItemId() == R.id.searchEmployeeOption) {
                     Intent intent = new Intent(getBaseContext(), EmployeeListView.class);
                     startActivity(intent);
                     return true;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     public void taskMenuOnClick(View view) {
         PopupMenu taskMenu = new PopupMenu(this, taskButton);
         taskMenu.inflate(R.menu.task_menu);
@@ -50,8 +52,7 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(getBaseContext(), AddTask.class);
                     startActivity(intent);
                     return true;
-                }
-                else if (item.getItemId() == R.id.searchTaskOption) {
+                } else if (item.getItemId() == R.id.searchTaskOption) {
                     Intent intent = new Intent(getBaseContext(), TaskListView.class);
                     startActivity(intent);
                     return true;
@@ -60,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 
 
 }

@@ -8,10 +8,11 @@
 
     <AutoCompleteTextView
         android:id="@+id/taskEmpNameInput"
-        android:layout_width="150dp"
+        android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:hint="@string/employee_name"
+        app:layout_constraintEnd_toEndOf="@+id/taskDeptArrow"
         app:layout_constraintStart_toStartOf="@+id/taskDeptNameInput"
         app:layout_constraintTop_toBottomOf="@+id/taskDeptNameInput" />
 
@@ -19,37 +20,27 @@
         android:id="@+id/taskEndDateArrow"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="20dp"
         android:contentDescription="@string/task_end_date_selector"
         android:onClick="endDateOnClick"
         android:padding="5sp"
         android:src="@mipmap/baseline_arrow_drop_down_black_18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/taskEndDateText"
         app:layout_constraintEnd_toEndOf="@+id/taskStartDateArrow"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/taskEndDateText"
-        app:layout_constraintTop_toBottomOf="@+id/taskStartDateText" />
+        app:layout_constraintTop_toTopOf="@+id/taskEndDateText" />
 
     <ImageView
         android:id="@+id/taskStartDateArrow"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="20dp"
         android:contentDescription="@string/task_start_date_selector"
         android:onClick="startDateOnClick"
         android:padding="5sp"
         android:src="@mipmap/baseline_arrow_drop_down_black_18dp"
-        app:layout_constraintEnd_toEndOf="@+id/taskEmpIdText"
-        app:layout_constraintTop_toBottomOf="@+id/taskEmpIdText" />
-
-    <TextView
-        android:id="@+id/taskEmpIdText"
-        android:layout_width="50dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:hint="@string/id_prefix"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/taskDeptArrow"
-        app:layout_constraintTop_toBottomOf="@+id/taskDeptNameInput" />
+        app:layout_constraintBottom_toBottomOf="@+id/taskStartDateText"
+        app:layout_constraintEnd_toEndOf="@+id/taskEmpNameInput"
+        app:layout_constraintTop_toTopOf="@+id/taskStartDateText" />
 
     <TextView
         android:id="@+id/taskEndDateText"
@@ -105,16 +96,16 @@
     <EditText
         android:id="@+id/taskDescriptionInput"
         android:layout_width="200dp"
-        android:layout_height="100dp"
+        android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="@string/description"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/taskEndDateArrow"
         app:layout_constraintStart_toStartOf="@+id/taskEndDateText"
-        app:layout_constraintTop_toBottomOf="@+id/taskEndDateText"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@+id/taskEndDateText" />
 
     <Button
         android:id="@+id/taskAddButton"

@@ -19,7 +19,8 @@ import androidx.appcompat.widget.SearchView;
 import java.util.ArrayList;
 
 public class TaskListView extends AppCompatActivity {
-    private DatabaseHelper db;
+    private TaskTableHelper taskDb;
+    private EmployeeTableHelper empDb;
     private ListView listView;
     ArrayList<Task> tasks;
     TaskListAdapter adapter;
@@ -28,26 +29,23 @@ public class TaskListView extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_layout);
-        db = new DatabaseHelper(this);
+        taskDb = new TaskTableHelper(this);
+        empDb = new EmployeeTableHelper(this);
         listView = findViewById(R.id.listView);
         LayoutInflater inflater = getLayoutInflater();
         ViewGroup header = (ViewGroup) inflater.inflate(R.layout.task_list_header, listView, false);
         listView.addHeaderView(header);
         tasks = new ArrayList<>();
-        Cursor data = db.getDataFromTable(db.TASK_TABLE_NAME);
+        Cursor data = taskDb.getData();
         if (data.getCount() == 0) {
             Toast.makeText(this, "Database is empty!", Toast.LENGTH_LONG).show();
         } else {
-            while(data.moveToNext()) {
-                Task task = new Task(data.getString(1), data.getString(2), data.getString(3), data.getInt(4));
+            while (data.moveToNext()) {
+                Task task = new Task(data.getString(1), data.getString(2), data.getString(3), data.getInt(4), data.getString(5));
                 task.setId(data.getInt(0));
                 //Get Employee Name from Employee Table
-                Cursor employeeData = db.getEmployeeInformation(task.getEmpId());
-                employeeData.moveToNext();
-                String employeeName = employeeData.getString(1)+" "+employeeData.getString(2);
+                String employeeName = empDb.getNameById(task.getEmpId());
                 task.setEmpName(employeeName);
-
-
                 tasks.add(task);
                 adapter = new TaskListAdapter(this, R.layout.task_list_adapter, tasks);
                 listView.setAdapter(adapter);
@@ -59,11 +57,13 @@ public class TaskListView extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 // Get the Cursor
-                Task item = (Task) parent.getItemAtPosition(position);
-                String taskID = String.valueOf(item.getId());
-                Intent intent = new Intent(getBaseContext(), DetailTaskView.class);
-                intent.putExtra("taskID", taskID);
-                startActivity(intent);
+                if (position > 0) {
+                    Task item = (Task) parent.getItemAtPosition(position);
+                    String taskID = String.valueOf(item.getId());
+                    Intent intent = new Intent(getBaseContext(), DetailTaskView.class);
+                    intent.putExtra("taskID", taskID);
+                    startActivity(intent);
+                }
             }
         });
     }
