@@ -31,5 +31,9 @@
     <string name="assign_task">Assign Task</string>
     <string name="mark_as_complete">Mark As Complete</string>
     <string name="mark_as_cancel">Mark As Cancel</string>
+    <string name="send">Send</string>
+    <string name="subject"> Subject:</string>
+    <string name="to"> To:</string>
+    <string name="message"> Message:</string>
 
 </resources>

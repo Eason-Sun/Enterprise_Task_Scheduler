@@ -22,6 +22,7 @@
         <activity android:name=".TaskListView"></activity>
         <activity android:name=".DetailTaskView"></activity>
         <activity android:name=".DetailEmployeeView"></activity>
+        <activity android:name=".ContactEmployee"></activity>
     </application>
 
 </manifest>
