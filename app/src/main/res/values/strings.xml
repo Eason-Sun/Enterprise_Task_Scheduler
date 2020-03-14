@@ -29,5 +29,7 @@
     <string name="email">Email</string>
     <string name="contact">Contact</string>
     <string name="assign_task">Assign Task</string>
+    <string name="mark_as_complete">Mark As Complete</string>
+    <string name="mark_as_cancel">Mark As Cancel</string>
 
 </resources>

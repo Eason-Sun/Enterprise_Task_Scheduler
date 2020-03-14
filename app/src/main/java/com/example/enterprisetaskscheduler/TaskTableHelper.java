@@ -26,8 +26,25 @@ public class TaskTableHelper extends DatabaseHelper {
         values.put(COL_DEPARTMENT, t.getDept());
         values.put(COL_STATUS, t.getStatus());
         values.put(COL_DESCRIPTION, t.getDescription());
+        values.put(COL_LEVEL, t.getLevel());
         SQLiteDatabase db = getWritableDatabase();
         long res = db.insert(TASK_TABLE_NAME, null, values);
+        return res != -1;
+    }
+
+    public boolean modify(ListItem item, int taskID) {
+        Task t = (Task) item;
+        ContentValues values = new ContentValues();
+        values.put(COL_NAME, t.getName());
+        values.put(COL_START_DATE, t.getStartDate());
+        values.put(COL_DUE_DATE, t.getDueDate());
+        values.put(COL_EMPLOYEE_ID, t.getEmpId());
+        values.put(COL_DEPARTMENT, t.getDept());
+        values.put(COL_STATUS, t.getStatus());
+        values.put(COL_DESCRIPTION, t.getDescription());
+        values.put(COL_LEVEL, t.getLevel());
+        SQLiteDatabase db = getWritableDatabase();
+        long res = db.update(TASK_TABLE_NAME, values, "_id = " + taskID, null);
         return res != -1;
     }
 

@@ -56,7 +56,6 @@
         android:id="@+id/taskDeptArrow"
         android:layout_width="40dp"
         android:layout_height="40sp"
-        android:layout_marginTop="20dp"
         android:contentDescription="@string/task_dept_selector"
         android:onClick="deptOnClick"
         android:padding="5sp"
@@ -64,7 +63,21 @@
         app:layout_constraintEnd_toEndOf="@+id/taskNameInput"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/taskDeptNameInput"
-        app:layout_constraintTop_toBottomOf="@+id/taskNameInput" />
+        app:layout_constraintTop_toTopOf="@+id/taskDeptNameInput" />
+
+    <ImageView
+        android:id="@+id/taskLevelArrow"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:contentDescription="@string/task_dept_selector"
+        android:onClick="levelOnClick"
+        android:padding="5sp"
+        android:src="@mipmap/baseline_arrow_drop_down_black_18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/taskLevelInput"
+        app:layout_constraintEnd_toEndOf="@+id/taskNameInput"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/taskDeptNameInput"
+        app:layout_constraintTop_toTopOf="@+id/taskLevelInput" />
 
     <EditText
         android:id="@+id/taskNameInput"
@@ -142,6 +155,15 @@
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:hint="@string/department"
+        app:layout_constraintStart_toStartOf="@+id/taskNameInput"
+        app:layout_constraintTop_toBottomOf="@+id/taskLevelInput" />
+
+    <AutoCompleteTextView
+        android:id="@+id/taskLevelInput"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:hint="@string/level"
         app:layout_constraintStart_toStartOf="@+id/taskNameInput"
         app:layout_constraintTop_toBottomOf="@+id/taskNameInput" />
 

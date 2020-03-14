@@ -50,7 +50,8 @@ public abstract class DatabaseHelper extends SQLiteOpenHelper {
                 COL_EMPLOYEE_ID + " integer, " +
                 COL_DEPARTMENT + " text, " +
                 COL_STATUS+ " text, " +
-                COL_DESCRIPTION + " text)";
+                COL_DESCRIPTION + " text, " +
+                COL_LEVEL + " text)";
         db.execSQL(createTaskTable);
     }
 

@@ -22,7 +22,7 @@ public class AddTask extends AppCompatActivity {
     private Calendar currDate;
     private int startDay, startMonth, startYear;
     private EditText taskNameInput, taskDescriptionInput;
-    private AutoCompleteTextView taskDeptNameInput, taskEmpNameInput;
+    private AutoCompleteTextView taskDeptNameInput, taskEmpNameInput, taskLevelInput;
     private TextView taskStartDateText, taskEndDateText;
     private TaskTableHelper taskDb;
     private EmployeeTableHelper empDb;
@@ -85,7 +85,28 @@ public class AddTask extends AppCompatActivity {
             }
         });
 
+        //AutoCompleteView Task Level
+        taskLevelInput= findViewById(R.id.taskLevelInput);
+        ArrayAdapter<String> levelAdapter = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, Task.LEVELS);
+        taskLevelInput.setAdapter(levelAdapter);
+        taskLevelInput.setThreshold(1);
+        taskLevelInput.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    String level = taskLevelInput.getText().toString();
+                    for(String e : Task.LEVELS)
+                        if (level.compareTo(e) == 0) return;
+                    taskLevelInput.setText("");
+                }
+            }
+        });
+
         taskStartDateText.setText(startYear + "/" + (startMonth + 1) + "/" + startDay);
+    }
+
+    public void levelOnClick(View view) {
+        taskLevelInput.showDropDown();
     }
 
     public void deptOnClick(View view) {
@@ -134,6 +155,7 @@ public class AddTask extends AppCompatActivity {
             Task task = new Task(taskName, startDate, endDate, empId, dept);
             task.setEmpName(empName);
             task.setDescription(taskDescriptionInput.getText().toString());
+            task.setLevel(taskLevelInput.getText().toString());
 
             boolean res = taskDb.add(task);
             taskNameInput.setText("");
@@ -142,6 +164,7 @@ public class AddTask extends AppCompatActivity {
             taskEndDateText.setText("");
             taskEmpNameInput.setText("");
             taskDescriptionInput.setText("");
+            taskLevelInput.setText("");
             if (res)
                 Toast.makeText(this, "New Task has been added successfully!", Toast.LENGTH_LONG).show();
             else
