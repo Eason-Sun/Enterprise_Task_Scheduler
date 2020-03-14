@@ -12,13 +12,13 @@ import androidx.appcompat.app.AppCompatActivity;
 public class DetailEmployeeView extends AppCompatActivity {
 
     private EmployeeTableHelper empDb;
-    TextView empDetailIdText, empDetailNameText, empDetailDeptText;
+    TextView empDetailIdText, empDetailNameText, empDetailDeptText, empDetailEmailText;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_emp_view);
-        TextView empDetailLevelText, empDetailStartDateText, empDetailEmailText;
+        TextView empDetailLevelText, empDetailStartDateText;
 
         empDb = new EmployeeTableHelper(this);
         int empId = Integer.parseInt(getIntent().getStringExtra("empId"));
@@ -46,6 +46,15 @@ public class DetailEmployeeView extends AppCompatActivity {
         String empInfo = empNameId + "," + empDept;
         Intent intent = new Intent(this, AddTask.class);
         intent.putExtra("empInfo", empInfo);
+        startActivity(intent);
+    }
+
+    public void contactOnClick(View view) {
+        String empName = empDetailNameText.getText().toString();
+        String empEmail = empDetailEmailText.getText().toString();
+        Intent intent = new Intent(this, ContactEmployee.class);
+        intent.putExtra("empName", empName);
+        intent.putExtra("empEmail", empEmail);
         startActivity(intent);
     }
 
