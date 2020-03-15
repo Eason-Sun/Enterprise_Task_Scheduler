@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import androidx.annotation.Nullable;
 
 public abstract class DatabaseHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "list.db";
+    private static final String DATABASE_NAME = "list1.db";
     protected static final String COL_ID = "_id";
     protected static final String COL_NAME = "Name";
     protected static final String COL_START_DATE = "`Start Date`";

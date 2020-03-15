@@ -65,28 +65,47 @@ public class DetailTaskView extends AppCompatActivity {
 
 
     public void completeOnClick(View view) {
-        task.setStatus(task.STATUS[1]);
-        boolean res = taskDb.modify(task, taskID);
-        if (res){
-            Toast.makeText(this, "Task has been successfully marked as complete", Toast.LENGTH_LONG).show();
-            Cursor data = taskDb.getDataById(taskID);
-            data.moveToNext();
-            taskDetailStatusText.setText(data.getString(6));
+        String taskStatus = taskDetailStatusText.getText().toString();
+        if (taskStatus.equals(task.STATUS[1])){
+            Toast.makeText(this, "The task has already been completed", Toast.LENGTH_LONG).show();
         }
-        else
-            Toast.makeText(this, "Operation failed. Please try again!", Toast.LENGTH_LONG).show();
+        else if (taskStatus.equals(task.STATUS[2])){
+            Toast.makeText(this, "Can not cancel an completed task", Toast.LENGTH_LONG).show();
+        }
+        else if (taskStatus.equals(task.STATUS[0])){
+            task.setStatus(task.STATUS[1]);
+            boolean res = taskDb.modify(task, taskID);
+            if (res){
+                Toast.makeText(this, "Task has been successfully marked as complete", Toast.LENGTH_LONG).show();
+                Cursor data = taskDb.getDataById(taskID);
+                data.moveToNext();
+                taskDetailStatusText.setText(data.getString(6));
+            }
+            else
+                Toast.makeText(this, "Operation failed. Please try again!", Toast.LENGTH_LONG).show();
+        }
     }
 
     public void cancelOnClick(View view) {
-        task.setStatus(task.STATUS[2]);
-        boolean res = taskDb.modify(task, taskID);
-        if (res) {
-            Toast.makeText(this, "Task has been successfully marked as cancel", Toast.LENGTH_LONG).show();
-            Cursor data = taskDb.getDataById(taskID);
-            data.moveToNext();
-            taskDetailStatusText.setText(data.getString(6));
-        } else
-            Toast.makeText(this, "Operation failed. Please try again!", Toast.LENGTH_LONG).show();
-    }
+        String taskStatus = taskDetailStatusText.getText().toString();
+        if (taskStatus.equals(task.STATUS[1])){
+            Toast.makeText(this, "Can not cancel an completed Task", Toast.LENGTH_LONG).show();
+        }
+        else if (taskStatus.equals(task.STATUS[2])){
+            Toast.makeText(this, "The Task has already been canceled", Toast.LENGTH_LONG).show();
+        }
+        else if (taskStatus.equals(task.STATUS[0])){
+            task.setStatus(task.STATUS[2]);
+            boolean res = taskDb.modify(task, taskID);
+            if (res) {
+                Toast.makeText(this, "Task has been successfully marked as cancel", Toast.LENGTH_LONG).show();
+                Cursor data = taskDb.getDataById(taskID);
+                data.moveToNext();
+                taskDetailStatusText.setText(data.getString(6));
+            } else
+                Toast.makeText(this, "Operation failed. Please try again!", Toast.LENGTH_LONG).show();
+            }
+        }
+
 
 }
