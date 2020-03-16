@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/select_column"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/applyTaskListViewAdjust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="30dp"
+        android:onClick="applyOnClick"
+        android:text="@string/apply"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkTaskEndDateColumn" />
+
+    <Button
+        android:id="@+id/cancelTaskListViewAdjust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:onClick="cancelOnClick"
+        android:text="@string/cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/applyTaskListViewAdjust" />
+
+    <CheckBox
+        android:id="@+id/checkIDColumn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/id"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/textView13"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    <CheckBox
+        android:id="@+id/checkTaskNameColumn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/task_name"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/checkIDColumn"
+        app:layout_constraintTop_toBottomOf="@+id/checkIDColumn" />
+
+    <CheckBox
+        android:id="@+id/checkTaskLevelColumn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/level"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/checkTaskNameColumn"
+        app:layout_constraintTop_toBottomOf="@+id/checkTaskNameColumn" />
+
+    <CheckBox
+        android:id="@+id/checkTaskDeptColumn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/department"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/checkTaskLevelColumn"
+        app:layout_constraintTop_toBottomOf="@+id/checkTaskLevelColumn" />
+
+    <CheckBox
+        android:id="@+id/checkTaskEmpNameColumn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/employee_name"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/checkTaskDeptColumn"
+        app:layout_constraintTop_toBottomOf="@+id/checkTaskDeptColumn" />
+
+    <CheckBox
+        android:id="@+id/checkTaskStatusColumn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/task_status"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/checkTaskEmpNameColumn"
+        app:layout_constraintTop_toBottomOf="@+id/checkTaskEmpNameColumn" />
+
+    <CheckBox
+        android:id="@+id/checkTaskEndDateColumn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/end_date"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/checkTaskStartDateColumn"
+        app:layout_constraintTop_toBottomOf="@+id/checkTaskStartDateColumn" />
+
+    <CheckBox
+        android:id="@+id/checkTaskStartDateColumn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/start_date"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/checkTaskStatusColumn"
+        app:layout_constraintTop_toBottomOf="@+id/checkTaskStatusColumn" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,5 +35,8 @@
     <string name="subject"> Subject:</string>
     <string name="to"> To:</string>
     <string name="message"> Message:</string>
+    <string name="select_column"> Select Display Column</string>
+    <string name="apply"> Apply</string>
+    <string name="cancel"> Cancel</string>
 
 </resources>

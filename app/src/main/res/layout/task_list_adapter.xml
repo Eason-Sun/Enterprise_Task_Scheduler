@@ -21,6 +21,22 @@
         android:textSize="15sp" />
 
     <TextView
+        android:id="@+id/taskLevelText"
+        android:layout_width="130dp"
+        android:layout_height="match_parent"
+        android:layout_weight="20"
+        android:gravity="center_horizontal"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/taskDeptNameText"
+        android:layout_width="130dp"
+        android:layout_height="match_parent"
+        android:layout_weight="20"
+        android:gravity="center_horizontal"
+        android:textSize="15sp" />
+
+    <TextView
         android:id="@+id/taskEmpNameText"
         android:layout_width="130dp"
         android:layout_height="match_parent"
@@ -29,11 +45,27 @@
         android:textSize="15sp" />
 
     <TextView
-        android:id="@+id/taskListEndDateText"
+        android:id="@+id/taskStatusText"
+        android:layout_width="130dp"
+        android:layout_height="match_parent"
+        android:layout_weight="20"
+        android:gravity="center_horizontal"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/taskListStartDateText"
         android:layout_width="120dp"
         android:layout_height="match_parent"
         android:layout_weight="20"
         android:gravity="center_horizontal"
         android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/taskListEndDateText"
+            android:layout_width="120dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:gravity="center_horizontal"
+            android:textSize="15sp" />
 
 </LinearLayout>

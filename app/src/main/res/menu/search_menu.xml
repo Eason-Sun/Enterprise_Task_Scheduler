@@ -8,4 +8,16 @@
         android:title="SearchMenu"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always|collapseActionView" />
+
+    <item
+        android:id="@+id/adjustColumn"
+        android:icon="@android:drawable/ic_menu_manage"
+        android:title="AdjustColumn"
+        app:showAsAction="always|collapseActionView" />
+
+    <item
+        android:id="@+id/goMainActivity"
+        android:icon="@android:drawable/ic_menu_set_as"
+        android:title="AdjustColumn"
+        app:showAsAction="always|collapseActionView" />
 </menu>

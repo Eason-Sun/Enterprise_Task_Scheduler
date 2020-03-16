@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".AdjustEmployeeListView"></activity>
+        <activity android:name=".AdjustTaskListView" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,13 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddEmployee"></activity>
-        <activity android:name=".AddTask"></activity>
-        <activity android:name=".EmployeeListView"></activity>
-        <activity android:name=".TaskListView"></activity>
-        <activity android:name=".DetailTaskView"></activity>
-        <activity android:name=".DetailEmployeeView"></activity>
-        <activity android:name=".ContactEmployee"></activity>
+        <activity android:name=".AddEmployee" />
+        <activity android:name=".AddTask" />
+        <activity android:name=".EmployeeListView" />
+        <activity android:name=".TaskListView" />
+        <activity android:name=".DetailTaskView" />
+        <activity android:name=".DetailEmployeeView" />
+        <activity android:name=".ContactEmployee" />
     </application>
 
 </manifest>

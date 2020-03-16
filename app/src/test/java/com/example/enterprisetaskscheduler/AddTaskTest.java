@@ -38,7 +38,7 @@ public class AddTaskTest {
         AutoCompleteTextView taskEmpNameInput = addTask.findViewById(R.id.taskEmpNameInput);
         ImageView taskEndDateArrow= addTask.findViewById(R.id.taskEndDateArrow);
         ImageView taskStartDateArrow = addTask.findViewById(R.id.taskStartDateArrow);
-        TextView taskEmpIdText = addTask.findViewById(R.id.taskEmpIdText);
+        //TextView taskEmpIdText = addTask.findViewById(R.id.;
         TextView taskEndDateText = addTask.findViewById(R.id.taskEndDateText);
         ImageView taskDeptArrow = addTask.findViewById(R.id.taskDeptArrow);
         EditText taskNameInput = addTask.findViewById(R.id.taskNameInput);
@@ -51,7 +51,7 @@ public class AddTaskTest {
         assertNotNull(taskEmpNameInput);
         assertNotNull(taskEndDateArrow);
         assertNotNull(taskStartDateArrow);
-        assertNotNull(taskEmpIdText);
+        //assertNotNull(taskEmpIdText);
         assertNotNull(taskEndDateText);
         assertNotNull(taskDeptArrow);
         assertNotNull(taskNameInput);
