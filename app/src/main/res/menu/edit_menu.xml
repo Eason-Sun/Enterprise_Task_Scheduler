@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/editItem"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="SearchMenu"
+        app:showAsAction="always|collapseActionView" />
+    <item
+        android:id="@+id/returnEditItem"
+        android:icon="@android:drawable/ic_menu_revert"
+        android:title="Return"
+        app:showAsAction="always|collapseActionView" />
+
+
+
+</menu>

@@ -2,8 +2,6 @@ package com.example.enterprisetaskscheduler;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -17,19 +15,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
-import org.robolectric.Shadows;
 import org.robolectric.annotation.Config;
-import org.robolectric.shadow.api.Shadow;
 import org.robolectric.shadows.ShadowDatePickerDialog;
 import org.robolectric.shadows.ShadowIntent;
-import org.robolectric.shadows.ShadowSQLiteOpenHelper;
 import org.robolectric.shadows.ShadowToast;
 
 
-import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 import static org.junit.Assert.*;
 import static org.robolectric.Shadows.shadowOf;
@@ -58,8 +51,8 @@ public class AddEmployeeTest {
     public void onCreate() {
         ImageView taskStartDateArrow = addEmployee.findViewById(R.id.taskStartDateArrow);
         EditText empLstNameInput = addEmployee.findViewById(R.id.empLstNameInput);
-        Button empAddButton = addEmployee.findViewById(R.id.empAddButton);
-        Button empViewButton = addEmployee.findViewById(R.id.empViewButton);
+        Button empAddButton = addEmployee.findViewById(R.id.empEditApplyButton);
+        Button empViewButton = addEmployee.findViewById(R.id.empEditCancelButton);
         EditText empFstNameInput = addEmployee.findViewById(R.id.empFstNameInput);
         AutoCompleteTextView empDeptNameInput = addEmployee.findViewById(R.id.empDeptNameInput);
         ImageView empDeptArrow = addEmployee.findViewById(R.id.empDeptArrow);
@@ -90,7 +83,7 @@ public class AddEmployeeTest {
         EditText empFstNameInput = addEmployee.findViewById(R.id.empFstNameInput);
         AutoCompleteTextView empDeptNameInput = addEmployee.findViewById(R.id.empDeptNameInput);
         TextView empStartDateText = addEmployee.findViewById(R.id.empStartDateText);
-        Button empAddButton = addEmployee.findViewById(R.id.empAddButton);
+        Button empAddButton = addEmployee.findViewById(R.id.empEditApplyButton);
 
 
         //---Case Employee added successfully
@@ -124,7 +117,7 @@ public class AddEmployeeTest {
 
     @Test
     public void viewOnClick() {
-        Button empViewButton = addEmployee.findViewById(R.id.empViewButton);
+        Button empViewButton = addEmployee.findViewById(R.id.empEditCancelButton);
         empViewButton.performClick();
         startedIntent = shadowOf(addEmployee).getNextStartedActivity();
         shadowIntent = shadowOf(startedIntent);

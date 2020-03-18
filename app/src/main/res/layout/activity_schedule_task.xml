@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="@+id/taskEndDateText" />
 
     <ImageView
-        android:id="@+id/taskStartDateArrow"
+        android:id="@+id/empStartDateEditArrow"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:contentDescription="@string/task_start_date_selector"

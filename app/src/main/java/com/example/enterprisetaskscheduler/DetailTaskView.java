@@ -1,14 +1,19 @@
 package com.example.enterprisetaskscheduler;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 
 public class DetailTaskView extends AppCompatActivity {
@@ -62,6 +67,30 @@ public class DetailTaskView extends AppCompatActivity {
         taskDetailDescriptionText.setText(task.getDescription());
         taskDetailLevelText.setText(task.getLevel());
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.edit_menu, menu); // Inflate employee_search_menu_menu.xml and display it.
+        return super.onCreateOptionsMenu(menu);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        Intent intent;
+        switch(item.getItemId()) {
+            case R.id.editItem:
+                intent = new Intent(this, EditTask.class);
+                intent.putExtra("taskID",  Integer.toString(taskID));
+                this.startActivity(intent);
+                break;
+            case R.id.returnEditItem:
+                intent = new Intent(this, TaskListView.class);
+                this.startActivity(intent);
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        return true;
+    }
 
 
     public void completeOnClick(View view) {
@@ -106,6 +135,4 @@ public class DetailTaskView extends AppCompatActivity {
                 Toast.makeText(this, "Operation failed. Please try again!", Toast.LENGTH_LONG).show();
             }
         }
-
-
 }

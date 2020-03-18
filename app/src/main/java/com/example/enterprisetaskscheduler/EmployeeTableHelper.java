@@ -52,6 +52,19 @@ public class EmployeeTableHelper extends DatabaseHelper {
         return empNameIds;
     }
 
+    public boolean modify(ListItem item, int empID) {
+        Employee e = (Employee) item;
+        ContentValues values = new ContentValues();
+        values.put(COL_NAME, e.getName());
+        values.put(COL_DEPARTMENT, e.getDept());
+        values.put(COL_START_DATE, e.getStartDate());
+        values.put(COL_EMAIL, e.getEmail());
+        values.put(COL_LEVEL, e.getLevel());
+        SQLiteDatabase db = getWritableDatabase();
+        long res = db.update(EMPLOYEE_TABLE_NAME, values, "_id = " + empID, null);
+        return res != -1;
+    }
+
     public void removeDataById(int id) {
         super.removeDataFromTableById(EMPLOYEE_TABLE_NAME, id);
     }

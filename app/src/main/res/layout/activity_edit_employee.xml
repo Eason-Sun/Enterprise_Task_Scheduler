@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditEmployee">
+
+    <ImageView
+        android:id="@+id/empLevelEditArrow"
+        android:layout_width="40dp"
+        android:layout_height="40sp"
+        android:contentDescription="@string/emp_dept_selector"
+        android:onClick="levelOnClick"
+        android:padding="5sp"
+        android:src="@mipmap/baseline_arrow_drop_down_black_18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/empLevelEdit"
+        app:layout_constraintEnd_toEndOf="@+id/empEmailInput"
+        app:layout_constraintStart_toEndOf="@+id/empLevelEdit"
+        app:layout_constraintTop_toTopOf="@+id/empLevelEdit" />
+
+    <AutoCompleteTextView
+        android:id="@+id/empLevelEdit"
+        android:layout_width="160sp"
+        android:layout_height="40sp"
+        android:layout_marginTop="20dp"
+        android:hint="@string/level"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/empLstNameEdit"
+        app:layout_constraintTop_toBottomOf="@+id/empLstNameEdit" />
+
+    <ImageView
+        android:id="@+id/empStartDateEditArrow"
+        android:layout_width="40dp"
+        android:layout_height="40sp"
+        android:contentDescription="@string/emp_start_date_selector"
+        android:onClick="startDateOnClick"
+        android:padding="5sp"
+        android:src="@mipmap/baseline_arrow_drop_down_black_18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/empStartDateEdit"
+        app:layout_constraintEnd_toEndOf="@+id/empDeptArrow"
+        app:layout_constraintStart_toEndOf="@+id/empStartDateEdit"
+        app:layout_constraintTop_toTopOf="@+id/empStartDateEdit" />
+
+    <Button
+        android:id="@+id/empEditApplyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="50dp"
+        android:onClick="editOnClick"
+        android:text="@string/edit"
+        app:layout_constraintEnd_toStartOf="@+id/empEditCancelButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/empEmailEdit" />
+
+    <Button
+        android:id="@+id/empEditCancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="100dp"
+        android:layout_marginRight="100dp"
+        android:onClick="cancelOnClick"
+        android:text="@string/cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/empEditApplyButton" />
+
+    <TextView
+        android:id="@+id/empIDEdit"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:hint="@string/id"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/empFstNameEdit"
+        android:layout_width="200sp"
+        android:layout_height="40sp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/first_name"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/empIDEdit"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="@+id/empIDEdit"
+        app:layout_constraintTop_toBottomOf="@+id/empIDEdit" />
+
+    <EditText
+        android:id="@+id/empLstNameEdit"
+        android:layout_width="200sp"
+        android:layout_height="40sp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="@string/last_name"
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/empFstNameEdit"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/empFstNameEdit"
+        app:layout_constraintTop_toBottomOf="@+id/empFstNameEdit" />
+
+    <EditText
+        android:id="@+id/empEmailEdit"
+        android:layout_width="200sp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="@+id/empFstNameEdit"
+        app:layout_constraintHorizontal_bias="0.538"
+        app:layout_constraintStart_toStartOf="@+id/empStartDateEdit"
+        app:layout_constraintTop_toBottomOf="@+id/empStartDateEdit" />
+
+    <AutoCompleteTextView
+        android:id="@+id/empDeptNameEdit"
+        android:layout_width="160sp"
+        android:layout_height="40sp"
+        android:layout_marginTop="20dp"
+        android:hint="@string/department"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/empLevelEdit"
+        app:layout_constraintStart_toStartOf="@+id/empLevelEdit"
+        app:layout_constraintTop_toBottomOf="@+id/empLevelEdit" />
+
+    <ImageView
+        android:id="@+id/empDeptEditArrow"
+        android:layout_width="40dp"
+        android:layout_height="40sp"
+        android:contentDescription="@string/emp_dept_selector"
+        android:onClick="deptOnClick"
+        android:padding="5sp"
+        android:src="@mipmap/baseline_arrow_drop_down_black_18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/empDeptNameEdit"
+        app:layout_constraintStart_toEndOf="@+id/empDeptNameEdit"
+        app:layout_constraintTop_toTopOf="@+id/empDeptNameEdit" />
+
+    <TextView
+        android:id="@+id/empStartDateEdit"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:gravity="left|center_vertical"
+        android:hint="@string/start_date"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/empFstNameEdit"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/empDeptNameEdit"
+        app:layout_constraintTop_toBottomOf="@+id/empDeptNameEdit" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:text="@string/employee_id"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/empIDEdit"
+        app:layout_constraintEnd_toStartOf="@+id/empIDEdit"
+        app:layout_constraintTop_toTopOf="@+id/empIDEdit" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/first_name"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/empFstNameEdit"
+        app:layout_constraintEnd_toEndOf="@+id/textView14"
+        app:layout_constraintStart_toStartOf="@+id/textView14"
+        app:layout_constraintTop_toTopOf="@+id/empFstNameEdit" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/last_name"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/empLstNameEdit"
+        app:layout_constraintEnd_toEndOf="@+id/textView15"
+        app:layout_constraintStart_toStartOf="@+id/textView15"
+        app:layout_constraintTop_toTopOf="@+id/empLstNameEdit" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/department"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/empDeptNameEdit"
+        app:layout_constraintEnd_toEndOf="@+id/textView18"
+        app:layout_constraintStart_toStartOf="@+id/textView18"
+        app:layout_constraintTop_toTopOf="@+id/empDeptNameEdit" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start_date"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/empStartDateEdit"
+        app:layout_constraintEnd_toEndOf="@+id/textView17"
+        app:layout_constraintStart_toStartOf="@+id/textView17"
+        app:layout_constraintTop_toTopOf="@+id/empStartDateEdit" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/email"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/empEmailEdit"
+        app:layout_constraintEnd_toEndOf="@+id/textView19"
+        app:layout_constraintStart_toStartOf="@+id/textView19"
+        app:layout_constraintTop_toTopOf="@+id/empEmailEdit" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/level"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/empLevelEdit"
+        app:layout_constraintEnd_toEndOf="@+id/textView16"
+        app:layout_constraintStart_toStartOf="@+id/textView16"
+        app:layout_constraintTop_toTopOf="@+id/empLevelEdit" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

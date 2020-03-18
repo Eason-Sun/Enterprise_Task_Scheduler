@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdjustEmployeeListView"></activity>
+        <activity android:name=".EditTask"></activity>
+        <activity android:name=".EditEmployee" />
+        <activity android:name=".AdjustEmployeeListView" />
         <activity android:name=".AdjustTaskListView" />
         <activity android:name=".MainActivity">
             <intent-filter>
