@@ -88,9 +88,18 @@ public abstract class DatabaseHelper extends SQLiteOpenHelper {
         return itemNames;
     }
 
+    protected Cursor searchDataBase(String tableName, String condition, String value){
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor data = db.rawQuery("select * from " + tableName + " where " +
+                condition + "=" + "'" + value + "'", null);
+        return data;
+    }
+
     public void removeDataFromTableById(String tableName, int id) {
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("delete from " + tableName + " where " + COL_ID + "=\"" + id);
     }
+
+
 
 }

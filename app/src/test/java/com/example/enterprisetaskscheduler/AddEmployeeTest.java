@@ -37,12 +37,12 @@ public class AddEmployeeTest {
     // This path is used in building the absolute path for the database
     private static final String DB_PATH = "/database/list.db";
     // This will contain the absolute file path to the database
-    private DatabaseHelper db;
+    private EmployeeTableHelper db;
 
     @Before
     public void setUp() throws Exception {
         addEmployee = Robolectric.buildActivity(AddEmployee.class).create().visible().get();
-        //db = new DatabaseHelper(addEmployee.getApplicationContext());
+        db = new EmployeeTableHelper(addEmployee.getApplicationContext());
 
 
     }
@@ -51,12 +51,14 @@ public class AddEmployeeTest {
     public void onCreate() {
         ImageView taskStartDateArrow = addEmployee.findViewById(R.id.taskStartDateArrow);
         EditText empLstNameInput = addEmployee.findViewById(R.id.empLstNameInput);
-        Button empAddButton = addEmployee.findViewById(R.id.empEditApplyButton);
-        Button empViewButton = addEmployee.findViewById(R.id.empEditCancelButton);
+        EditText empEmailInput = addEmployee.findViewById(R.id.empEmailInput);
+        Button empAddButton = addEmployee.findViewById(R.id.empAddButton);
+        Button empViewButton = addEmployee.findViewById(R.id.empViewButton);
         EditText empFstNameInput = addEmployee.findViewById(R.id.empFstNameInput);
         AutoCompleteTextView empDeptNameInput = addEmployee.findViewById(R.id.empDeptNameInput);
         ImageView empDeptArrow = addEmployee.findViewById(R.id.empDeptArrow);
         TextView empStartDateText = addEmployee.findViewById(R.id.empStartDateText);
+        EditText empLevelInput = addEmployee.findViewById(R.id.empLevelInput);
         //Check if all above component display correct
         assertNotNull(taskStartDateArrow);
         assertNotNull(empLstNameInput);
@@ -66,6 +68,8 @@ public class AddEmployeeTest {
         assertNotNull(empDeptNameInput);
         assertNotNull(empDeptArrow);
         assertNotNull(empStartDateText);
+        assertNotNull(empEmailInput);
+        assertNotNull(empLevelInput);
     }
 
     @Test
@@ -74,6 +78,8 @@ public class AddEmployeeTest {
         String[] lstNameArray = {"Wu"};
         String[] fstNameArray = {"Beichen"};
         String[] empDeptName = {"R&D", "Marketing", "Manufacturing", "Sales", "Logistic"};
+        String[] empEmail = {"Bei@gmail.com", "Hello@gamil.com"};
+        String[] empLevel = {"Entry", "Junior", "Intermediate", "Senior"};
         String pattern = "yyyy/MM/dd";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         Calendar.getInstance().getTime();
@@ -81,6 +87,8 @@ public class AddEmployeeTest {
         //Activity Object Setup
         EditText empLstNameInput = addEmployee.findViewById(R.id.empLstNameInput);
         EditText empFstNameInput = addEmployee.findViewById(R.id.empFstNameInput);
+        EditText empLevelInput = addEmployee.findViewById(R.id.empLevelInput);
+        EditText empEmailInput = addEmployee.findViewById(R.id.empEmailInput);
         AutoCompleteTextView empDeptNameInput = addEmployee.findViewById(R.id.empDeptNameInput);
         TextView empStartDateText = addEmployee.findViewById(R.id.empStartDateText);
         Button empAddButton = addEmployee.findViewById(R.id.empEditApplyButton);
@@ -91,18 +99,22 @@ public class AddEmployeeTest {
         empLstNameInput.setText(lstNameArray[0]);
         empFstNameInput.setText(fstNameArray[0]);
         empDeptNameInput.setText(empDeptName[0]);
+        empEmailInput.setText(empEmail[0]);
+        empLevelInput.setText(empLevel[0]);
+
         empStartDateText.setText(currentTime);
         empAddButton.performClick();
         //Check the toast are displayed properly
         assertEquals(ShadowToast.getTextOfLatestToast(), "New employee has been added successfully!");
         //Check that the employee information has been successfully uploaded with toast shown
-        //Cursor data = db.searchDataBase(db.EMPLOYEE_TABLE_NAME, "Start_Date", currentTime);
-        //data.moveToNext();
-        //assertEquals(data.getString(1), fstNameArray[0]);
-        //assertEquals(data.getString(2), lstNameArray[0]);
-        //assertEquals(data.getString(3), empDeptName[0]);
-        //db.close();
-
+        Cursor data = db.searchDataBase(db.EMPLOYEE_TABLE_NAME, "`Start Date`", currentTime);
+        data.moveToNext();
+        assertEquals(data.getString(1), fstNameArray[0] + " " + lstNameArray[0]);
+        assertEquals(data.getString(2), empDeptName[0]);
+        assertEquals(data.getString(3), currentTime);
+        assertEquals(data.getString(4), empEmail[0]);
+        assertEquals(data.getString(5), empLevel[0]);
+        db.close();
 
         //----Case Employee added not successfully
         //Setup the input

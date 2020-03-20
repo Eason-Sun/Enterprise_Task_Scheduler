@@ -2,6 +2,7 @@ package com.example.enterprisetaskscheduler;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Build;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -17,6 +18,10 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadows.ShadowDatePickerDialog;
 import org.robolectric.shadows.ShadowIntent;
+import org.robolectric.shadows.ShadowToast;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import static org.junit.Assert.*;
 import static org.robolectric.Shadows.shadowOf;
@@ -27,10 +32,12 @@ public class AddTaskTest {
     private AddTask addTask;
     private Intent startedIntent;
     private ShadowIntent shadowIntent;
+    private TaskTableHelper db;
 
     @Before
     public void setUp() throws Exception {
         addTask = Robolectric.buildActivity(AddTask.class).create().visible().get();
+        db = new TaskTableHelper(addTask.getApplicationContext());
     }
 
     @Test
@@ -38,7 +45,6 @@ public class AddTaskTest {
         AutoCompleteTextView taskEmpNameInput = addTask.findViewById(R.id.taskEmpNameInput);
         ImageView taskEndDateArrow= addTask.findViewById(R.id.taskEndDateArrow);
         ImageView taskStartDateArrow = addTask.findViewById(R.id.taskStartDateArrow);
-        //TextView taskEmpIdText = addTask.findViewById(R.id.;
         TextView taskEndDateText = addTask.findViewById(R.id.taskEndDateText);
         ImageView taskDeptArrow = addTask.findViewById(R.id.taskDeptArrow);
         EditText taskNameInput = addTask.findViewById(R.id.taskNameInput);
@@ -51,7 +57,6 @@ public class AddTaskTest {
         assertNotNull(taskEmpNameInput);
         assertNotNull(taskEndDateArrow);
         assertNotNull(taskStartDateArrow);
-        //assertNotNull(taskEmpIdText);
         assertNotNull(taskEndDateText);
         assertNotNull(taskDeptArrow);
         assertNotNull(taskNameInput);
@@ -102,6 +107,58 @@ public class AddTaskTest {
 
     @Test
     public void addOnClick() {
+        //Prepare Raw Data
+        String[] taskNameArray = {"Blending", "Testing"};
+        String[] taskDeptName = {"R&D", "Marketing", "Manufacturing", "Sales", "Logistic"};
+        String[] taskEmpNameArray = {"Beichen Wu"};
+        String[] taskEmpIDArray = {"1"};
+        String[] taskDes = {"Test1", "Test2"};
+        String pattern = "yyyy/MM/dd";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        Calendar.getInstance().getTime();
+        String currentTime = simpleDateFormat.format(Calendar.getInstance().getTime());
+        //Activity Object Setup
+        EditText taskNameInput = addTask.findViewById(R.id.taskNameInput);
+        EditText taskDeptNameInput = addTask.findViewById(R.id.taskDeptNameInput);
+        EditText taskEmpNameInput = addTask.findViewById(R.id.taskEmpNameInput);
+        TextView taskStartDateText = addTask.findViewById(R.id.taskStartDateText);
+        TextView taskEndDateText = addTask.findViewById(R.id.taskEndDateText);
+        EditText taskDescriptionInput = addTask.findViewById(R.id.taskDescriptionInput);
+        Button taskAddButton = addTask.findViewById(R.id.taskAddButton);
+
+        //---Case Employee added successfully
+        //Setup the input
+        taskNameInput.setText(taskNameArray[0]);
+        taskDeptNameInput.setText(taskDeptName[0]);
+        taskEmpNameInput.setText(taskEmpNameArray[0]+ " #" + taskEmpIDArray[0]);
+        taskStartDateText.setText(currentTime);
+        taskEndDateText.setText(currentTime);
+        taskDescriptionInput.setText(taskDes[0]);
+        taskAddButton.performClick();
+        //Check the toast are displayed properly
+        assertEquals(ShadowToast.getTextOfLatestToast(), "New Task has been added successfully!");
+        //Check that the employee information has been successfully uploaded with toast shown
+        Cursor data = db.searchDataBase(db.TASK_TABLE_NAME, "`Start Date`", currentTime);
+        data.moveToNext();
+        assertEquals(data.getString(1), taskNameArray[0]);
+        assertEquals(data.getString(2), currentTime);
+        assertEquals(data.getString(3), currentTime);
+        assertEquals(data.getString(4), taskEmpIDArray[0]);
+        assertEquals(data.getString(5), taskDeptName[0]);
+        assertEquals(data.getString(7), taskDes[0]);
+        db.close();
+
+        //----Case Employee added not successfully
+        //Setup the input
+        taskNameInput.setText("");
+        taskDeptNameInput.setText("");
+        taskEmpNameInput.setText(taskEmpNameArray[0]);
+        taskStartDateText.setText("");
+        taskEndDateText.setText(currentTime);
+        taskDescriptionInput.setText(taskDes[0]);
+        taskAddButton.performClick();
+        //Check the toast are displayed properly
+        assertEquals(ShadowToast.getTextOfLatestToast(), "All fields must be filled!");
     }
 
     @Test
