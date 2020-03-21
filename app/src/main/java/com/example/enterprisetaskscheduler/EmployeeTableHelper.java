@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class EmployeeTableHelper extends DatabaseHelper {
 
@@ -28,6 +29,12 @@ public class EmployeeTableHelper extends DatabaseHelper {
         SQLiteDatabase db = getWritableDatabase();
         long res = db.insert(EMPLOYEE_TABLE_NAME, null, values);
         return res != -1;
+    }
+
+    public void addAll(List<Employee> employees) {
+        for(Employee e: employees) {
+            add(e);
+        }
     }
 
     public Cursor getData() {
