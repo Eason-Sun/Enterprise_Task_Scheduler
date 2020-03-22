@@ -56,6 +56,12 @@ public class TaskTableHelper extends DatabaseHelper {
         return super.getDataFromTableById(TASK_TABLE_NAME, id);
     }
 
+    public Cursor getDataByDueDate(String Date) {
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor data = db.rawQuery("select * from " + TASK_TABLE_NAME + " where " + COL_DUE_DATE + " = "+ "'"+ Date + "'", null);
+        return data;
+    }
+
     public ArrayList<Integer> getIdByDept(String deptName) {
         return super.getIdFromTableByDept(TASK_TABLE_NAME, deptName);
     }

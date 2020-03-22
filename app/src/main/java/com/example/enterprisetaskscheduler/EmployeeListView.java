@@ -110,6 +110,7 @@ public class EmployeeListView extends AppCompatActivity {
                 break;
             case R.id.goMainActivity:
                 intent = new Intent(this, MainActivity.class);
+                intent.putExtra("lastActivty", "EmployeeListView");
                 this.startActivity(intent);
                 break;
             default:

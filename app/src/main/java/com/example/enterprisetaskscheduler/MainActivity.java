@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private Button taskButton;
     private static final int PERMISSION_REQUEST_STORAGE = 1000;
     private static final int READ_REQUEST_CODE = 42;
+    private TaskTableHelper taskDb = new TaskTableHelper(this);
+    private String lastActivty;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +43,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         employeeButton = findViewById(R.id.employeeButton);
         taskButton = findViewById(R.id.taskButton);
-
-        //
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
-                checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_STORAGE);
+        lastActivty = getIntent().getStringExtra("lastActivty");
+        if (lastActivty == null) {
+            startService( new Intent(this, NotificationService.class));
+        } else {
+            switch (lastActivty) {
+                case "TaskListView":
+                    startService( new Intent(this, NotificationService.class));
+                    break;
+            }
         }
+    }
 
+    @Override
+    protected void onStop () {
+        super.onStop();
+        startService( new Intent(this, NotificationService.class));
+    }
+    public void closeApp (View view) {
+        finish() ;
     }
 
     public void employeeMenuOnClick(View view) {
@@ -97,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-
         if (requestCode == PERMISSION_REQUEST_STORAGE) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this, "Permission Granted!", Toast.LENGTH_SHORT).show();

@@ -118,6 +118,7 @@ public class TaskListView extends AppCompatActivity {
                 break;
             case R.id.goMainActivity:
                 intent = new Intent(this, MainActivity.class);
+                intent.putExtra("lastActivty", "TaskListView");
                 this.startActivity(intent);
                 break;
             default:
