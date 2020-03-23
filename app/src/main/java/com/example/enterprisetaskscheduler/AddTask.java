@@ -150,12 +150,13 @@ public class AddTask extends AppCompatActivity {
             String endDate = taskEndDateText.getText().toString();
             String empNameId = taskEmpNameInput.getText().toString();
             String empName = empNameId.split(" #")[0];
+            String level = taskLevelInput.getText().toString();
             int empId = Integer.parseInt(empNameId.split(" #")[1]);
             String dept = taskDeptNameInput.getText().toString();
             Task task = new Task(taskName, startDate, endDate, empId, dept);
             task.setEmpName(empName);
             task.setDescription(taskDescriptionInput.getText().toString());
-            task.setLevel(taskLevelInput.getText().toString());
+            task.setLevel(level);
 
             boolean res = taskDb.add(task);
             taskNameInput.setText("");
@@ -165,8 +166,19 @@ public class AddTask extends AppCompatActivity {
             taskEmpNameInput.setText("");
             taskDescriptionInput.setText("");
             taskLevelInput.setText("");
-            if (res)
+            if (res) {
                 Toast.makeText(this, "New Task has been added successfully!", Toast.LENGTH_LONG).show();
+                String email = empDb.getEmailById(empId);
+                String subject = "New task assigned to you!";
+                String msg = String.format("Hello %s,\n\nThe %s level task: %s has been assigned to you. Please submit the work before %s.\n\nThank you!",
+                        empName.split(" ")[0], level, taskName, endDate);
+                Intent intent = new Intent(this, ContactEmployee.class);
+                intent.putExtra("fromActivity", "AddTask");
+                intent.putExtra("email", email);
+                intent.putExtra("subject", subject);
+                intent.putExtra("msg", msg);
+                startActivity(intent);
+            }
             else
                 Toast.makeText(this, "Operation failed. Please try again!", Toast.LENGTH_LONG).show();
         } else {

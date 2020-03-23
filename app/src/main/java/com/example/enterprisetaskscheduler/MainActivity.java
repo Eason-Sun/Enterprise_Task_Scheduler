@@ -43,7 +43,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         employeeButton = findViewById(R.id.employeeButton);
         taskButton = findViewById(R.id.taskButton);
-        lastActivty = getIntent().getStringExtra("lastActivty");
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
+                                checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                       requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_STORAGE);}
+
+            lastActivty = getIntent().getStringExtra("lastActivty");
         if (lastActivty == null) {
             startService( new Intent(this, NotificationService.class));
         } else {

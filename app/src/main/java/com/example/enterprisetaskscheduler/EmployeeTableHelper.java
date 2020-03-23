@@ -49,6 +49,12 @@ public class EmployeeTableHelper extends DatabaseHelper {
         return data.getString(1);
     }
 
+    public String getEmailById(int id) {
+        Cursor data = getDataById(id);
+        data.moveToFirst();
+        return data.getString(4);
+    }
+
     public ArrayList<String> getNamesByDept(String deptName) {
         ArrayList<Integer> empIds =  super.getIdFromTableByDept(EMPLOYEE_TABLE_NAME, deptName);
         ArrayList<String> empNameIds = new ArrayList<>();

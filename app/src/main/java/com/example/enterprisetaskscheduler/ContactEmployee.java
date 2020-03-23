@@ -2,6 +2,7 @@ package com.example.enterprisetaskscheduler;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,11 +21,9 @@ public class ContactEmployee extends AppCompatActivity {
         contactEmailText = findViewById(R.id.contactEmailText);
         contactSubjectInput = findViewById(R.id.contactSubjectInput);
         contactMessageInput = findViewById(R.id.contactMessageInput);
-        String empName = getIntent().getStringExtra("empName");
-        String fstName = empName.split(" ")[0];
-        String empEmail = getIntent().getStringExtra("empEmail");
-        contactEmailText.setText(empEmail);
-        contactMessageInput.setText("Hello " + fstName + ",\n\n");
+        contactEmailText.setText(getIntent().getStringExtra("email"));
+        contactSubjectInput.setText(getIntent().getStringExtra("subject"));
+        contactMessageInput.setText(getIntent().getStringExtra("msg"));
 
     }
 

@@ -77,11 +77,13 @@ public class DetailEmployeeView extends AppCompatActivity {
     }
 
     public void contactOnClick(View view) {
-        String empName = empDetailNameText.getText().toString();
+        String empName = empDetailNameText.getText().toString().split(" ")[0];
         String empEmail = empDetailEmailText.getText().toString();
         Intent intent = new Intent(this, ContactEmployee.class);
-        intent.putExtra("empName", empName);
-        intent.putExtra("empEmail", empEmail);
+        intent.putExtra("fromActivity", "DetailEmployeeView");
+        intent.putExtra("email", empEmail);
+        intent.putExtra("subject", "");
+        intent.putExtra("msg", "Hello " + empName + ",\n\nThank you!");
         startActivity(intent);
     }
 
