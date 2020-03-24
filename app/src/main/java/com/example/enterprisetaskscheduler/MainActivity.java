@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,6 +27,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int READ_REQUEST_CODE = 42;
     private TaskTableHelper taskDb = new TaskTableHelper(this);
     private String lastActivty;
+    private NotificationService notificationService;
+    private int numberOfTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,21 +49,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         employeeButton = findViewById(R.id.employeeButton);
         taskButton = findViewById(R.id.taskButton);
+        notificationService = new NotificationService();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
                                 checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                        requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_STORAGE);}
-
-            lastActivty = getIntent().getStringExtra("lastActivty");
-        if (lastActivty == null) {
-            startService( new Intent(this, NotificationService.class));
-        } else {
-            switch (lastActivty) {
-                case "TaskListView":
-                    startService( new Intent(this, NotificationService.class));
-                    break;
-            }
-        }
     }
 
     @Override
@@ -177,6 +173,16 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+    public int getTaskNumber (){
+        taskDb = new TaskTableHelper(getApplicationContext());
+        Calendar currDate = Calendar.getInstance();
+        int currDay = currDate.get(Calendar.DAY_OF_MONTH);
+        int currMonth = currDate.get(Calendar.MONTH);
+        int currYear = currDate.get(Calendar.YEAR);
+        String date = currYear + "/" + (currMonth + 1) + "/" + currDay;
+        Cursor Data = taskDb.getDataByDueDate(date);
+        return Data.getCount();
     }
 }
 

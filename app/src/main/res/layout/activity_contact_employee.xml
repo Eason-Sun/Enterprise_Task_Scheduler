@@ -48,4 +48,11 @@
         android:onClick="sendOnClick"
         android:text="@string/send" />
 
+    <Button
+        android:id="@+id/skipEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="skipEmailOnClick"
+        android:text="@string/skip_email" />
+
 </LinearLayout>

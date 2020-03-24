@@ -38,4 +38,9 @@ public class ContactEmployee extends AppCompatActivity {
         intent.setType("message/rfc822");
         startActivity(Intent.createChooser(intent, "Choose an email client:"));
     }
+
+    public void skipEmailOnClick(View view) {
+        Intent intent = new Intent(getBaseContext(), TaskListView.class);
+        startActivity(intent);
+    }
 }

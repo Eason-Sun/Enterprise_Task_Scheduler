@@ -15,13 +15,11 @@ import java.util.Calendar;
 import java.util.Timer ;
 import java.util.TimerTask ;
 public class NotificationService extends Service {
-    public static final String NOTIFICATION_CHANNEL_ID = "10001";
-    private final static String default_notification_channel_id = "default";
-    private TaskTableHelper taskDb;
     Timer timer ;
     TimerTask timerTask ;
     String TAG = "Timers" ;
     int Your_X_SECS = 5 ;
+    TaskTableHelper taskDb;
 
     @Override
     public IBinder onBind (Intent arg0) {
@@ -62,29 +60,37 @@ public class NotificationService extends Service {
             public void run () {
                 handler.post( new Runnable() {
                     public void run () {
-                        createNotification() ;
+                        int NumberOfTask = getTaskNumber();
+                        createNotification(NumberOfTask) ;
                     }
                 }) ;
             }
         } ;
     }
-    private void createNotification () {
+
+    public int getTaskNumber (){
         taskDb = new TaskTableHelper(getApplicationContext());
-        String Note;
         Calendar currDate = Calendar.getInstance();
         int currDay = currDate.get(Calendar.DAY_OF_MONTH);
         int currMonth = currDate.get(Calendar.MONTH);
         int currYear = currDate.get(Calendar.YEAR);
         String date = currYear + "/" + (currMonth + 1) + "/" + currDay;
         Cursor Data = taskDb.getDataByDueDate(date);
-        if (Data.getCount() > 0){
+        return Data.getCount();
+    }
+
+    public void createNotification (int NumberOfTask) {
+        String NOTIFICATION_CHANNEL_ID = "10001";
+        String default_notification_channel_id = "default";
+        String Note;
+        if (NumberOfTask > 0){
             NotificationManager mNotificationManager = (NotificationManager) getSystemService( NOTIFICATION_SERVICE ) ;
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext() , default_notification_channel_id ) ;
             mBuilder.setContentTitle( "Task Due Notification" );
-            if (Data.getCount() > 1){
-                Note = "There are " + (Data.getCount()) + " tasks due today";
+            if (NumberOfTask > 1){
+                Note = "There are " + NumberOfTask+ " tasks due today";
             }else{
-                Note = "There is " + (Data.getCount()) + " task due today";
+                Note = "There is " + NumberOfTask + " task due today";
             }
             mBuilder.setContentText(Note) ;
             mBuilder.setTicker("Notification Listener Service") ;
@@ -100,6 +106,5 @@ public class NotificationService extends Service {
             assert mNotificationManager != null;
             mNotificationManager.notify(( int ) System. currentTimeMillis () , mBuilder.build()) ;
         }
-
     }
 }
