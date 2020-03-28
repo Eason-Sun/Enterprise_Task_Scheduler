@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ContactEmployee extends AppCompatActivity {
     TextView contactEmailText;
     EditText contactSubjectInput, contactMessageInput;
+    String  empName, fstName, empEmail;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,12 +22,14 @@ public class ContactEmployee extends AppCompatActivity {
         contactEmailText = findViewById(R.id.contactEmailText);
         contactSubjectInput = findViewById(R.id.contactSubjectInput);
         contactMessageInput = findViewById(R.id.contactMessageInput);
-        String empName = getIntent().getStringExtra("empName");
-        String fstName = empName.split(" ")[0];
-        String empEmail = getIntent().getStringExtra("empEmail");
+
+        empName = getIntent().getStringExtra("empName");
+        if (empName != null && !empName.isEmpty()) {
+            fstName = empName.split(" ")[0];
+        }
+        empEmail = getIntent().getStringExtra("empEmail");
         contactEmailText.setText(empEmail);
         contactMessageInput.setText("Hello " + fstName + ",\n\n");
-
     }
 
     public void sendOnClick(View view) {
