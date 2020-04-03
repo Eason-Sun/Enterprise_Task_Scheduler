@@ -7,6 +7,18 @@
     tools:context=".EditEmployee">
 
     <ImageView
+        android:id="@+id/empStartDateEditArrow"
+        android:layout_width="40dp"
+        android:layout_height="40sp"
+        android:contentDescription="@string/emp_dept_selector"
+        android:onClick="startDateOnClick"
+        android:padding="5sp"
+        android:src="@mipmap/baseline_arrow_drop_down_black_18dp"
+        app:layout_constraintBottom_toBottomOf="@+id/empStartDateEdit"
+        app:layout_constraintStart_toEndOf="@+id/empStartDateEdit"
+        app:layout_constraintTop_toTopOf="@+id/empStartDateEdit" />
+
+    <ImageView
         android:id="@+id/empLevelEditArrow"
         android:layout_width="40dp"
         android:layout_height="40sp"
@@ -28,19 +40,6 @@
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/empLstNameEdit"
         app:layout_constraintTop_toBottomOf="@+id/empLstNameEdit" />
-
-    <ImageView
-        android:id="@+id/empStartDateEditArrow"
-        android:layout_width="40dp"
-        android:layout_height="40sp"
-        android:contentDescription="@string/emp_start_date_selector"
-        android:onClick="startDateOnClick"
-        android:padding="5sp"
-        android:src="@mipmap/baseline_arrow_drop_down_black_18dp"
-        app:layout_constraintBottom_toBottomOf="@+id/empStartDateEdit"
-        app:layout_constraintEnd_toEndOf="@+id/empDeptArrow"
-        app:layout_constraintStart_toEndOf="@+id/empStartDateEdit"
-        app:layout_constraintTop_toTopOf="@+id/empStartDateEdit" />
 
     <Button
         android:id="@+id/empEditApplyButton"

@@ -25,13 +25,13 @@
         android:padding="5sp"
         android:src="@mipmap/baseline_arrow_drop_down_black_18dp"
         app:layout_constraintBottom_toBottomOf="@+id/taskEndDateText"
-        app:layout_constraintEnd_toEndOf="@+id/taskStartDateArrow"
+        app:layout_constraintEnd_toEndOf="@+id/empStartDateArrow"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/taskEndDateText"
         app:layout_constraintTop_toTopOf="@+id/taskEndDateText" />
 
     <ImageView
-        android:id="@+id/empStartDateEditArrow"
+        android:id="@+id/taskStartDateArrow"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:contentDescription="@string/task_start_date_selector"
@@ -101,7 +101,7 @@
         android:layout_marginTop="20dp"
         android:hint="@string/start_date"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/taskStartDateArrow"
+        app:layout_constraintEnd_toStartOf="@+id/empStartDateArrow"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/taskEmpNameInput"
         app:layout_constraintTop_toBottomOf="@+id/taskEmpNameInput" />

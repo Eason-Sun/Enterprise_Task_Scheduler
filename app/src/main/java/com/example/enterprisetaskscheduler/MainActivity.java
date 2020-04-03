@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -130,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                 Uri url = data.getData();
                 String path = url.getPath();
                 path = path.substring(path.indexOf(":") + 1);
-                loadCsvFile(path);
+                loadCsvFile(Environment.getExternalStorageDirectory()+"/"+path);
             }
         }
     }

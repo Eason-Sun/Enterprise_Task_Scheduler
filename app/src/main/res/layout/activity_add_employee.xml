@@ -30,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/empEmailInput" />
 
     <ImageView
-        android:id="@+id/taskStartDateArrow"
+        android:id="@+id/empStartDateArrow"
         android:layout_width="40dp"
         android:layout_height="40sp"
         android:contentDescription="@string/emp_start_date_selector"
@@ -127,7 +127,7 @@
         android:gravity="left|center_vertical"
         android:hint="@string/start_date"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/taskStartDateArrow"
+        app:layout_constraintEnd_toStartOf="@+id/empStartDateArrow"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/empDeptNameInput"
         app:layout_constraintTop_toBottomOf="@+id/empDeptNameInput" />

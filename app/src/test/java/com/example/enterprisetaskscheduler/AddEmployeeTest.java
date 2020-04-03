@@ -50,7 +50,7 @@ public class AddEmployeeTest {
 
     @Test
     public void onCreate() {
-        ImageView taskStartDateArrow = addEmployee.findViewById(R.id.taskStartDateArrow);
+        ImageView taskStartDateArrow = addEmployee.findViewById(R.id.empStartDateArrow);
         EditText empLstNameInput = addEmployee.findViewById(R.id.empLstNameInput);
         EditText empEmailInput = addEmployee.findViewById(R.id.empEmailInput);
         Button empAddButton = addEmployee.findViewById(R.id.empAddButton);
@@ -92,7 +92,7 @@ public class AddEmployeeTest {
         EditText empEmailInput = addEmployee.findViewById(R.id.empEmailInput);
         AutoCompleteTextView empDeptNameInput = addEmployee.findViewById(R.id.empDeptNameInput);
         TextView empStartDateText = addEmployee.findViewById(R.id.empStartDateText);
-        Button empAddButton = addEmployee.findViewById(R.id.empEditApplyButton);
+        Button empAddButton = addEmployee.findViewById(R.id.empAddButton);
 
 
         //---Case Employee added successfully
@@ -130,7 +130,7 @@ public class AddEmployeeTest {
 
     @Test
     public void viewOnClick() {
-        Button empViewButton = addEmployee.findViewById(R.id.empEditCancelButton);
+        Button empViewButton = addEmployee.findViewById(R.id.empViewButton);
         empViewButton.performClick();
         startedIntent = shadowOf(addEmployee).getNextStartedActivity();
         shadowIntent = shadowOf(startedIntent);
@@ -156,7 +156,7 @@ public class AddEmployeeTest {
     @Test
     public void startDateOnClick() {
         TextView empStartDateText = addEmployee.findViewById(R.id.empStartDateText);
-        ImageView taskStartDateArrow = addEmployee.findViewById(R.id.taskStartDateArrow);
+        ImageView taskStartDateArrow = addEmployee.findViewById(R.id.empStartDateArrow);
         taskStartDateArrow.performClick();
         DatePickerDialog dialog = (DatePickerDialog) ShadowDatePickerDialog.getLatestDialog();
         dialog.updateDate(2013, 10, 23);
