@@ -6,6 +6,7 @@
     android:padding="15dp">
 
     <TextView
+        android:id="@+id/contactTextTo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/to"
@@ -18,6 +19,7 @@
         android:textSize="20sp"/>
 
     <TextView
+        android:id="@+id/contactTextSubject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/subject"
@@ -30,6 +32,7 @@
         android:inputType="textEmailSubject" />
 
     <TextView
+        android:id="@+id/contactTextMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/message"
@@ -43,6 +46,7 @@
         android:lines="10" />
 
     <Button
+        android:id="@+id/sendContactEmployee"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="sendOnClick"

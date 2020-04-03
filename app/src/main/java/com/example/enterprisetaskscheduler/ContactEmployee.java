@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ContactEmployee extends AppCompatActivity {
     TextView contactEmailText;
     EditText contactSubjectInput, contactMessageInput;
+    String  empName, fstName, empEmail;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
