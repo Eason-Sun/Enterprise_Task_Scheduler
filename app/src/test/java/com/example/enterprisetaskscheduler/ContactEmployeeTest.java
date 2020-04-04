@@ -85,8 +85,12 @@ public class ContactEmployeeTest {
     @Test
     public void checkOnCreateShowCorrectMessage() {
         Intent intent = new Intent();
-        intent.putExtra("empName", "Jane Doe");
-        intent.putExtra("empEmail", "jd@test.com");
+        intent.putExtra("fromActivity", "AddTask");
+        intent.putExtra("email", "jd@test.com");
+        intent.putExtra("subject", "New task assigned to you!");
+        String msg = String.format("Hello %s,\n\nThe %s level task: %s has been assigned to you. Please submit the work before %s.\n\nThank you!",
+                "David", "Entry", "Test", "2020/04/07");
+        intent.putExtra("msg", msg);
 
         ContactEmployee intentActivity = Robolectric.buildActivity(ContactEmployee.class, intent)
                 .create()
@@ -95,7 +99,10 @@ public class ContactEmployeeTest {
 
         TextView message = intentActivity.findViewById(R.id.contactMessageInput);
         TextView email = intentActivity.findViewById(R.id.contactEmailText);
-        assertEquals("Hello Jane,\n\n", message.getText().toString());
+        TextView subject = intentActivity.findViewById(R.id.contactSubjectInput);
         assertEquals("jd@test.com", email.getText().toString());
+        assertEquals("New task assigned to you!", subject.getText().toString());
+        assertEquals(msg, message.getText().toString());
     }
+
 }

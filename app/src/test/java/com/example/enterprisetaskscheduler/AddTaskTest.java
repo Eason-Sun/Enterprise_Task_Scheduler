@@ -33,11 +33,13 @@ public class AddTaskTest {
     private Intent startedIntent;
     private ShadowIntent shadowIntent;
     private TaskTableHelper db;
+    private EmployeeTableHelper empdb;
 
     @Before
     public void setUp() throws Exception {
         addTask = Robolectric.buildActivity(AddTask.class).create().visible().get();
         db = new TaskTableHelper(addTask.getApplicationContext());
+        empdb = new EmployeeTableHelper(addTask.getApplicationContext());
     }
 
     @Test
@@ -126,7 +128,15 @@ public class AddTaskTest {
         EditText taskDescriptionInput = addTask.findViewById(R.id.taskDescriptionInput);
         Button taskAddButton = addTask.findViewById(R.id.taskAddButton);
 
-        //---Case Employee added successfully
+        //---Case Task added successfully
+        //Pre-set Employee
+        String fullName = taskEmpNameArray[0];
+        String dept = taskDeptName[0];
+        String startDate = currentTime;
+        String level = ListItem.LEVELS[0];
+        String email = "beichenwu$@gmail.com";
+        Employee e = new Employee(fullName, dept, startDate, email, level);
+        boolean res = empdb.add(e);
         //Setup the input
         taskNameInput.setText(taskNameArray[0]);
         taskDeptNameInput.setText(taskDeptName[0]);
