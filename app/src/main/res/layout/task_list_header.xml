@@ -4,8 +4,8 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/headerFstNameText2"
-        android:layout_width="40dp"
+        android:id="@+id/headerTaskID"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="@string/id"
@@ -13,8 +13,8 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/headerTaskNameText"
-        android:layout_width="120dp"
+        android:id="@+id/headerTaskName"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="@string/task_name"
@@ -22,8 +22,26 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/headerEmpNameText"
-        android:layout_width="130dp"
+        android:id="@+id/headerTaskLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/level"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/headerTaskDeptName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/department"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/headerTaskEmpName"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="@string/employee_name"
@@ -31,11 +49,31 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/headerTaskStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/task_status"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/headerStartDateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/start_date"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
         android:id="@+id/headerDueDateText"
-        android:layout_width="120dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="@string/due_date"
         android:textSize="15sp"
         android:textStyle="bold" />
+
 </LinearLayout>

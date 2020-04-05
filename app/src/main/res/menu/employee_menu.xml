@@ -7,4 +7,7 @@
     <item android:id="@+id/searchEmployeeOption"
         android:title="Search Employee"/>
 
+    <item android:id="@+id/loadCsvOption"
+        android:title="Load csv"/>
+
 </menu>

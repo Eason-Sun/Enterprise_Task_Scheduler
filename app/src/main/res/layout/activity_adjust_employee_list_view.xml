@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdjustEmployeeListView">
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/select_column"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/applyEmployeeListViewAdjust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="120dp"
+        android:onClick="applyOnClick"
+        android:text="@string/apply"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkEmployeeEmailColumn" />
+
+    <Button
+        android:id="@+id/cancelEmployeeListViewAdjust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:onClick="cancelOnClick"
+        android:text="@string/cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/applyEmployeeListViewAdjust" />
+
+    <CheckBox
+        android:id="@+id/checkEmployeeIDColumn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/id"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/textView13"
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    <CheckBox
+        android:id="@+id/checkEmployeeNameColumn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/employee_name"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/checkEmployeeIDColumn"
+        app:layout_constraintTop_toBottomOf="@+id/checkEmployeeIDColumn" />
+
+    <CheckBox
+        android:id="@+id/checkEmployeeLevelColumn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/level"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/checkEmployeeNameColumn"
+        app:layout_constraintTop_toBottomOf="@+id/checkEmployeeNameColumn" />
+
+    <CheckBox
+        android:id="@+id/checkEmployeeDeptColumn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/department"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/checkEmployeeLevelColumn"
+        app:layout_constraintTop_toBottomOf="@+id/checkEmployeeLevelColumn" />
+
+    <CheckBox
+        android:id="@+id/checkEmployeeStartDateColumn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/start_date"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/checkEmployeeDeptColumn"
+        app:layout_constraintTop_toBottomOf="@+id/checkEmployeeDeptColumn" />
+
+    <CheckBox
+        android:id="@+id/checkEmployeeEmailColumn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/email"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/checkEmployeeStartDateColumn"
+        app:layout_constraintTop_toBottomOf="@+id/checkEmployeeStartDateColumn" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

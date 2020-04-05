@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <TextView
+        android:id="@+id/contactTextTo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/to"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <TextView
+        android:id="@+id/contactEmailText"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/contactTextSubject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/subject"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <EditText
+        android:id="@+id/contactSubjectInput"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:inputType="textEmailSubject" />
+
+    <TextView
+        android:id="@+id/contactTextMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/message"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+    <EditText
+        android:id="@+id/contactMessageInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start|top"
+        android:lines="10" />
+
+    <Button
+        android:id="@+id/sendContactEmployee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="sendOnClick"
+        android:text="@string/send" />
+
+    <Button
+        android:id="@+id/skipEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="skipEmailOnClick"
+        android:text="@string/skip_email" />
+
+</LinearLayout>

@@ -8,29 +8,41 @@
         android:id="@+id/empListIdText"
         android:layout_width="40dp"
         android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:gravity="center_horizontal" />
 
     <TextView
-        android:id="@+id/empListFstNameText"
-        android:layout_width="90dp"
+        android:id="@+id/empListNameText"
+        android:layout_width="150dp"
         android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:gravity="center_horizontal" />
 
     <TextView
-        android:id="@+id/empListLstNameText"
-        android:layout_width="90dp"
+        android:id="@+id/empListLevelText"
+        android:layout_width="150dp"
         android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:gravity="center_horizontal" />
 
     <TextView
         android:id="@+id/empListDeptText"
-        android:layout_width="90dp"
+        android:layout_width="120dp"
         android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:gravity="center_horizontal" />
 
     <TextView
         android:id="@+id/empListStartDateText"
         android:layout_width="100dp"
         android:layout_height="match_parent"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/empListEmailText"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_horizontal" />
 </LinearLayout>
